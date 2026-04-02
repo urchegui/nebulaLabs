@@ -56,7 +56,6 @@ export default function ParticleField() {
         ctx.fill();
       });
 
-      // Connections — white, very faint
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;

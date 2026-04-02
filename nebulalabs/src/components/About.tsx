@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Shield, BookOpen, Telescope, GitMerge } from 'lucide-react';
 import { useCardSpotlight } from '../hooks/useCardSpotlight';
+import isotipo from '../assets/ISOTIPO.svg';
 
 const VALUE_ICONS = [Shield, BookOpen, Telescope, GitMerge];
 
@@ -107,7 +108,7 @@ export default function About() {
             </div>
 
             {/* Orbital diagram */}
-            <div className="flex-shrink-0 w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 relative">
+            <div className="flex-shrink-0 w-64 h-64 sm:w-40 sm:h-40 md:w-44 md:h-44 relative">
               {['Q', 'A', 'I', 'S', 'R', 'D'].map((l, i) => {
                 const angle = (i / 6) * 2 * Math.PI;
                 const r = 66;
@@ -127,8 +128,8 @@ export default function About() {
                 );
               })}
 
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white flex items-center justify-center">
-                <span className="text-black font-bold text-base font-mono">N</span>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-12 rounded-full flex items-center justify-center">
+                <img className="text-black font-bold text-base font-mono" src={isotipo} alt="isotipo nebula labs" />
               </div>
 
               <motion.div

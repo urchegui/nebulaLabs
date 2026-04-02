@@ -9,7 +9,7 @@ export default {
     getInTouch: 'Contáctanos',
   },
   hero: {
-    badge: 'Cuántica · IA · Software · I+D',
+    badge: 'Computación Cuántica · IA · Software · I+D · Consultoría',
     title1: 'Donde la Cuántica',
     title2: 'Se Encuentra con la IA',
     subtitle:
@@ -78,7 +78,7 @@ export default {
     team: {
       title: 'Construido por un equipo multidisciplinar',
       description:
-        'Nuestro equipo reúne físicos, informáticos, investigadores de ML e ingenieros full-stack — unidos por la pasión por los problemas difíciles y las soluciones elegantes.',
+        'Nuestro equipo reúne matemáticos, doctores e ingenieros unidos por la pasión por los problemas difíciles y las soluciones elegantes.',
     },
   },
   docs: {

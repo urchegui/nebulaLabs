@@ -13,21 +13,17 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden grid-dots"
     >
-      {/* Top center glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-48 pointer-events-none"
         style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,163,255,0.3), transparent)' }}
       />
 
-      {/* Faint radial at center */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, rgba(0,163,255,0.04) 0%, transparent 60%)' }}
       />
 
-      {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -42,7 +38,6 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -54,7 +49,6 @@ export default function Hero() {
           <span className="text-gradient">{t('hero.title2')}</span>
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -64,7 +58,6 @@ export default function Hero() {
           {t('hero.subtitle')}
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -88,7 +81,6 @@ export default function Hero() {
           </button>
         </motion.div>
 
-        {/* Stats */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -108,7 +100,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

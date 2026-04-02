@@ -9,9 +9,9 @@ export default {
     getInTouch: 'Get in touch',
   },
   hero: {
-    badge: 'Quantum · AI · Software · R&D',
+    badge: 'Quantum · AI · Software · R&D · Consulting',
     title1: 'Where Quantum',
-    title2: 'Meets Intelligence',
+    title2: 'Meets AI',
     subtitle:
       'Nebula Labs is a deep-tech laboratory pushing the boundaries of quantum computing, artificial intelligence, and software engineering. We build the future — one breakthrough at a time.',
     cta: 'Explore our work',
@@ -78,7 +78,7 @@ export default {
     team: {
       title: 'Built by a multidisciplinary team',
       description:
-        'Our team brings together physicists, computer scientists, ML researchers, and full-stack engineers — united by a passion for hard problems and elegant solutions.',
+        'Our team brings together mathematicians, doctors and engineers united by a passion for hard problems and elegant solutions.',
     },
   },
   docs: {

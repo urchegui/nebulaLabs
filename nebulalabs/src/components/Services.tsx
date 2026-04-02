@@ -24,10 +24,8 @@ function ServiceCard({ cardKey, index }: { cardKey: typeof SERVICE_KEYS[number];
       onMouseLeave={onMouseLeave}
       className="spotlight-card group relative p-5 sm:p-8 bg-black hover:bg-[#0a0a0a] transition-colors duration-200 cursor-default"
     >
-      {/* Hover top border accent */}
       <div className="absolute top-0 left-0 right-0 h-px bg-[#00a3ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-      {/* Content sits above spotlight pseudo-element (z-[1]) */}
       <div className="relative z-[1]">
         <div className="inline-flex p-2.5 rounded-lg border border-white/[0.08] bg-white/[0.06] mb-5">
           <Icon size={18} className="text-[#a1a1aa] group-hover:text-white transition-colors" />

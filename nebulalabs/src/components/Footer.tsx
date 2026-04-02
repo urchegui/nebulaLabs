@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Github, Twitter, Linkedin } from 'lucide-react';
+import logoNebula from '../assets/LOGO.svg';
 
 const SOCIALS = [
   { icon: Github, href: '#', label: 'GitHub' },
@@ -21,12 +22,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-md bg-white flex items-center justify-center">
-                <span className="text-black font-bold text-sm font-mono leading-none">N</span>
+              <div className="w-36 h-36 rounded-md flex items-center justify-center">
+                <img src={logoNebula} alt="logo Nebula Labs" className='nebulaLabs-logo w-100 h-100' />
               </div>
-              <span className="font-semibold text-white text-[15px] tracking-tight">
-                nebula<span className="text-[#52525b]">labs</span>
-              </span>
             </div>
             <p className="text-[#3f3f46] text-xs leading-relaxed mb-5">
               {t('footer.description')}

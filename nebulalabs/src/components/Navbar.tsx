@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import logoNebula from '../assets/LOGO.svg';
 
 const NAV_LINKS = [
   { key: 'services', href: '#services' },
@@ -46,17 +47,13 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-          {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center gap-2.5 group"
           >
-            <div className="w-7 h-7 rounded-md bg-white flex items-center justify-center group-hover:bg-[#00a3ff] transition-colors duration-200">
-              <span className="text-black font-bold text-sm font-mono leading-none">N</span>
+            <div className="w-36 rounded-md flex items-center justify-center">
+              <img src={logoNebula} alt="logo Nebula Labs" className='nebulaLabs-logo w-100 h-100' />
             </div>
-            <span className="font-semibold text-white text-[15px] tracking-tight">
-              nebula<span className="text-[#a1a1aa]">labs</span>
-            </span>
           </button>
 
           {/* Desktop Nav */}
