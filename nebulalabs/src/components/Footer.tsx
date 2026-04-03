@@ -4,9 +4,9 @@ import { Github, Twitter, Linkedin } from 'lucide-react';
 import logoNebula from '../assets/LOGO.svg';
 
 const SOCIALS = [
-  { icon: Github, href: '#', label: 'GitHub' },
-  { icon: Twitter, href: '#', label: 'Twitter / X' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/Nebula-Labs-SL', label: 'GitHub' },
+  //{ icon: Twitter, href: '#', label: 'Twitter / X' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/company/nebula-labs-sl', label: 'LinkedIn' },
 ];
 
 export default function Footer() {

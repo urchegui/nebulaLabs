@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nebulalabs.es/sitemap.xml

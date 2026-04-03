@@ -88,7 +88,7 @@ export default function Hero() {
           className="mt-14 sm:mt-20 flex items-center justify-center gap-6 sm:gap-10 flex-wrap"
         >
           {[
-            { value: '4', label: 'Focus areas' },
+            { value: '5', label: 'Focus areas' },
             { value: '∞', label: 'Research depth' },
             { value: '0→1', label: 'Built from scratch' },
           ].map((stat) => (

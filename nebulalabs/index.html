@@ -1,25 +1,147 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nebula Labs — Quantum · AI · Software · R&D</title>
-    <meta name="description" content="Nebula Labs is a deep-tech laboratory pushing the boundaries of quantum computing, artificial intelligence, and software engineering." />
-    <meta name="theme-color" content="#050510" />
 
-    <meta property="og:title" content="Nebula Labs — Quantum · AI · Software · R&D · Consulting" />
-    <meta property="og:description" content="Deep-tech laboratory at the frontier of quantum computing, AI, and software engineering." />
-    <meta property="og:type" content="website" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nebula Labs — Quantum · AI · Software · R&D · Consulting</title>
+  <meta name="description"
+    content="Nebula Labs is a deep-tech laboratory specializing in quantum computing, artificial intelligence, custom software development, and technology consulting." />
+  <meta name="keywords"
+    content="quantum computing, artificial intelligence, software development, technology consulting, AI consulting, deep tech, R&D, machine learning" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#050510" />
+  <link rel="canonical" href="https://nebulalabs.es/" />
 
-    <!-- Favicon: simple SVG -->
-    <link rel="icon" type="image/png" href="./src/assets/nebulafavicon.ico">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Nebula Labs — Quantum · AI · Software · R&D · Consulting" />
+  <meta property="og:description"
+    content="Deep-tech laboratory at the frontier of quantum computing, AI, software development, and technology consulting." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nebulalabs.es/" />
+  <meta property="og:image" content="https://nebulalabs.es/og-image.jpg" />
+  <meta property="og:site_name" content="Nebula Labs" />
+  <meta property="og:locale" content="en_US" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nebula Labs — Quantum · AI · Software · R&D · Consulting" />
+  <meta name="twitter:description"
+    content="Deep-tech laboratory at the frontier of quantum computing, AI, software development, and technology consulting." />
+  <meta name="twitter:image" content="https://nebulalabs.es/assets/NEBULA.png" />
+
+  <link rel="icon" type="image/png" href="./src/assets/nebulafavicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWT8864LK9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HWT8864LK9');
+  </script>
+  <!-- SEO for LLM -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://nebulalabs.es/#organization",
+      "name": "Nebula Labs",
+      "url": "https://nebulalabs.es",
+      "logo": "https://nebulalabs.es/logo.svg",
+      "email": "hello@nebulalabs.es",
+      "description": "Deep-tech laboratory pushing the boundaries of quantum computing, artificial intelligence, and software engineering.",
+      "knowsAbout": [
+        "Quantum Computing",
+        "Artificial Intelligence",
+        "Software Engineering",
+        "Machine Learning",
+        "Research and Development"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Nebula Labs Services",
+        "itemListElement": [
+          { "@id": "https://nebulalabs.es/#service-quantum" },
+          { "@id": "https://nebulalabs.es/#service-ai" },
+          { "@id": "https://nebulalabs.es/#service-software" },
+          { "@id": "https://nebulalabs.es/#service-rd" }
+        ]
+      }
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://nebulalabs.es/#service-quantum",
+      "name": "Quantum Computing",
+      "serviceType": "Quantum Computing Research & Development",
+      "provider": { "@id": "https://nebulalabs.es/#organization" },
+      "description": "Exploring quantum algorithms, error correction, and hybrid classical-quantum architectures that solve problems beyond classical limits.",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock"
+      },
+      "keywords": "quantum computing, quantum algorithms, VQE, QAOA, quantum error correction, hybrid quantum-classical"
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://nebulalabs.es/#service-ai",
+      "name": "Artificial Intelligence",
+      "serviceType": "AI Consulting & Machine Learning Development",
+      "provider": { "@id": "https://nebulalabs.es/#organization" },
+      "description": "Building intelligent systems with cutting-edge ML research: large language models, neural architectures, and autonomous agents.",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock"
+      },
+      "keywords": "artificial intelligence, machine learning, LLMs, neural networks, AI agents, MLOps, AI consulting"
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://nebulalabs.es/#service-software",
+      "name": "Software Engineering",
+      "serviceType": "Custom Software Development",
+      "provider": { "@id": "https://nebulalabs.es/#organization" },
+      "description": "Crafting robust, scalable systems with modern engineering practices — from distributed backends to reactive frontends.",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock"
+      },
+      "keywords": "software development, distributed systems, cloud native, APIs, DevOps, backend, frontend"
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://nebulalabs.es/#service-rd",
+      "name": "Research & Development",
+      "serviceType": "Technology R&D Consulting",
+      "provider": { "@id": "https://nebulalabs.es/#organization" },
+      "description": "Publishing original research, collaborating with academic institutions, and transforming theoretical breakthroughs into practical applications.",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock"
+      },
+      "keywords": "research and development, academic collaboration, technology consulting, prototyping, patents"
+    }
+  ]
+}
+</script>
+
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>
