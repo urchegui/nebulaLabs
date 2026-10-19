@@ -1,0 +1,7 @@
+services:
+  web:
+    image: ghcr.io/urchegui/nebulalabs:${IMAGE_TAG:-latest}
+    container_name: nebulalabs-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8090:80"
