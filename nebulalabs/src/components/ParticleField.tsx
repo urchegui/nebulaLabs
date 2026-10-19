@@ -18,6 +18,8 @@ export default function ParticleField() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Reduced motion: draw the field once, without animating it
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let animationId: number;
     let particles: Particle[] = [];
     const NUM = 70;
@@ -73,14 +75,18 @@ export default function ParticleField() {
         }
       }
 
-      animationId = requestAnimationFrame(draw);
+      if (!reduceMotion) animationId = requestAnimationFrame(draw);
     };
 
     resize();
     init();
     draw();
 
-    const onResize = () => { resize(); init(); };
+    const onResize = () => {
+      resize();
+      init();
+      if (reduceMotion) draw();
+    };
     window.addEventListener('resize', onResize);
     return () => {
       cancelAnimationFrame(animationId);
@@ -91,6 +97,7 @@ export default function ParticleField() {
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       className="fixed inset-0 pointer-events-none z-0"
       style={{ opacity: 0.5 }}
     />

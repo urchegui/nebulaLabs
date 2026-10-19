@@ -1,98 +1,95 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus } from 'lucide-react';
+import { Minus, Plus } from 'lucide-react';
+import { sectionHref } from '../config/routes';
+import { useRoute } from '../lib/route';
+import { ctaClick } from '../lib/leadIntent';
+import { SectionHeader } from './ui';
 
-export default function FAQ() {
+interface FAQProps {
+  /** i18n key prefix holding { [key]: { q, a } } */
+  itemsKey: string;
+  keys: readonly string[];
+  id?: string;
+  badgeKey?: string;
+  titleKey: string;
+  subtitleKey?: string;
+  showContactCta?: boolean;
+}
+
+// Accordion: button + aria-expanded + aria-controls. Answers stay in the HTML (hidden attribute)
+// so search engines and AI crawlers read them without running JavaScript.
+export default function FAQ({
+  itemsKey,
+  keys,
+  id = 'faq',
+  badgeKey,
+  titleKey,
+  subtitleKey,
+  showContactCta = true,
+}: FAQProps) {
   const { t } = useTranslation();
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const items: { q: string; a: string }[] = t('faq.items', {
-    returnObjects: true,
-  }) as { q: string; a: string }[];
-
-  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
+  const { lang } = useRoute();
+  const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <section id="faq" className="relative py-20 sm:py-28 px-4 sm:px-6">
+    <section id={id} aria-labelledby={`${id}-title`} className="relative py-20 sm:py-28 px-4 sm:px-6">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-white/10 to-transparent" />
-
       <div className="max-w-2xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <p className="text-[11px] font-mono text-[#52525b] tracking-[0.15em] uppercase mb-4">
-            {t('faq.badge')}
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">
-            {t('faq.title')}
-          </h2>
-          <p className="text-[#71717a] text-base">{t('faq.subtitle')}</p>
-        </motion.div>
+        <SectionHeader
+          id={`${id}-title`}
+          badge={badgeKey ? t(badgeKey) : t('faq.badge')}
+          title={t(titleKey)}
+          subtitle={subtitleKey ? t(subtitleKey) : undefined}
+          className="mb-12"
+        />
 
-        {/* Accordion */}
-        <div className="divide-y divide-white/[0.05]">
-          {items.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.04 }}
-            >
-              <button
-                onClick={() => toggle(i)}
-                className="w-full flex items-start justify-between gap-4 sm:gap-6 py-5 text-left group"
-              >
-                <span className={`text-sm font-medium transition-colors ${
-                  openIndex === i ? 'text-white' : 'text-[#a1a1aa] group-hover:text-white'
-                }`}>
-                  {item.q}
-                </span>
-                <div className={`flex-shrink-0 mt-0.5 w-5 h-5 rounded flex items-center justify-center transition-all ${
-                  openIndex === i ? 'text-white' : 'text-[#52525b] group-hover:text-[#a1a1aa]'
-                }`}>
-                  {openIndex === i ? <Minus size={14} /> : <Plus size={14} />}
-                </div>
-              </button>
-
-              <AnimatePresence initial={false}>
-                {openIndex === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.22, ease: 'easeInOut' }}
-                    className="overflow-hidden"
+        <div className="divide-y divide-white/[0.06]">
+          {keys.map((key) => {
+            const isOpen = open === key;
+            const buttonId = `${id}-q-${key}`;
+            const panelId = `${id}-a-${key}`;
+            return (
+              <div key={key}>
+                <h3>
+                  <button
+                    id={buttonId}
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={panelId}
+                    onClick={() => setOpen(isOpen ? null : key)}
+                    className="w-full flex items-start justify-between gap-4 sm:gap-6 py-5 text-left group"
                   >
-                    <p className="text-[#71717a] text-sm leading-relaxed pb-5">{item.a}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                    <span className={`text-sm font-medium transition-colors ${isOpen ? 'text-white' : 'text-[#a1a1aa] group-hover:text-white'}`}>
+                      {t(`${itemsKey}.${key}.q`)}
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className={`flex-shrink-0 mt-0.5 w-5 h-5 rounded flex items-center justify-center ${isOpen ? 'text-white' : 'text-[#8a8a93] group-hover:text-[#a1a1aa]'}`}
+                    >
+                      {isOpen ? <Minus size={14} /> : <Plus size={14} />}
+                    </span>
+                  </button>
+                </h3>
+                <div id={panelId} role="region" aria-labelledby={buttonId} hidden={!isOpen}>
+                  <p className="text-[#8a8a93] text-sm leading-relaxed pb-5">{t(`${itemsKey}.${key}.a`)}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center mt-10"
-        >
-          <button
-            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="text-sm text-[#52525b] hover:text-white transition-colors border-b border-[#27272a] hover:border-white pb-px"
-          >
-            Still have questions? Contact us →
-          </button>
-        </motion.div>
+        {showContactCta && (
+          <div className="text-center mt-10">
+            <a
+              href={sectionHref(lang, 'contact')}
+              onClick={() => ctaClick('faq_contact', { source: 'faq' })}
+              className="text-sm text-[#8a8a93] hover:text-white transition-colors border-b border-white/[0.15] hover:border-white pb-px"
+            >
+              {t('faq.stillQuestions')} <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );

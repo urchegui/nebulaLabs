@@ -1,124 +1,100 @@
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
 import { Github, Linkedin } from 'lucide-react';
 import logoNebula from '../assets/LOGO.svg';
+import { SOCIALS } from '../config/site';
+import { pathFor, sectionHref, TERMS_ANCHOR } from '../config/routes';
+import { useRoute } from '../lib/route';
+import { openCookieSettings } from '../lib/cookieSettings';
+import { ExternalLink } from './ui';
 
-const SOCIALS = [
-  { icon: Github, href: 'https://github.com/Nebula-Labs-SL', label: 'GitHub' },
-  //{ icon: Twitter, href: '#', label: 'Twitter / X' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/company/nebula-labs-sl', label: 'LinkedIn' },
+// No X/Twitter account: only real profiles are linked
+const SOCIAL_LINKS = [
+  { icon: Github, href: SOCIALS.github, label: 'GitHub' },
+  { icon: Linkedin, href: SOCIALS.linkedin, label: 'LinkedIn' },
 ];
 
 export default function Footer() {
   const { t } = useTranslation();
+  const { lang } = useRoute();
 
-  const scrollTo = (href: string) =>
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+  const columns = [
+    {
+      title: t('footer.links.company'),
+      links: [
+        { label: t('footer.links.about'), href: sectionHref(lang, 'about') },
+        { label: t('footer.links.services'), href: sectionHref(lang, 'services') },
+        { label: t('footer.links.products'), href: sectionHref(lang, 'products') },
+        { label: t('footer.links.contact'), href: sectionHref(lang, 'contact') },
+      ],
+    },
+    {
+      title: t('footer.links.resources'),
+      links: [
+        { label: t('footer.links.research'), href: sectionHref(lang, 'research') },
+        { label: t('footer.links.faq'), href: sectionHref(lang, 'faq') },
+      ],
+    },
+    {
+      title: t('footer.links.legal'),
+      links: [
+        { label: t('footer.links.legalNotice'), href: pathFor('legalNotice', lang) },
+        { label: t('footer.links.privacy'), href: pathFor('privacy', lang) },
+        { label: t('footer.links.cookies'), href: pathFor('cookies', lang) },
+        { label: t('footer.links.terms'), href: `${pathFor('legalNotice', lang)}#${TERMS_ANCHOR[lang]}` },
+      ],
+    },
+  ];
+
+  const linkClass = 'text-[13px] text-[#8a8a93] hover:text-white transition-colors';
 
   return (
-    <footer className="relative border-t border-white/[0.05] pt-10 sm:pt-14 pb-8 px-4 sm:px-6">
+    <footer className="relative border-t border-white/[0.06] pt-10 sm:pt-14 pb-8 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 mb-10 sm:mb-14">
-          {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-36 h-36 rounded-md flex items-center justify-center">
-                <img src={logoNebula} alt="logo Nebula Labs" className='nebulaLabs-logo w-100 h-100' />
-              </div>
-            </div>
-            <p className="text-[#3f3f46] text-xs leading-relaxed mb-5">
-              {t('footer.description')}
-            </p>
-            <div className="flex gap-2">
-              {SOCIALS.map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="w-7 h-7 rounded-md border border-white/[0.07] hover:border-white/20 flex items-center justify-center text-[#3f3f46] hover:text-white transition-all"
-                >
-                  <Icon size={13} />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="text-[10px] font-mono text-[#3f3f46] uppercase tracking-[0.15em] mb-4">
-              {t('footer.links.company')}
-            </h4>
-            <ul className="space-y-2.5">
-              {[
-                { label: t('footer.links.about'), href: '#about' },
-                { label: t('footer.links.services'), href: '#services' },
-                { label: t('footer.links.contact'), href: '#contact' },
-              ].map((l) => (
-                <li key={l.href}>
-                  <button
-                    onClick={() => scrollTo(l.href)}
-                    className="text-[13px] text-[#52525b] hover:text-white transition-colors"
+            <img src={logoNebula} alt={t('a11y.logoAlt')} width={144} height={32} className="nebulaLabs-logo w-36 h-auto mb-4" />
+            <p className="text-[#8a8a93] text-xs leading-relaxed mb-5">{t('footer.description')}</p>
+            <ul className="flex gap-2">
+              {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
+                <li key={label}>
+                  <ExternalLink
+                    href={href}
+                    aria-label={label}
+                    className="w-8 h-8 rounded-md border border-white/[0.08] hover:border-white/20 flex items-center justify-center text-[#8a8a93] hover:text-white transition-colors"
                   >
-                    {l.label}
-                  </button>
+                    <Icon size={14} aria-hidden="true" />
+                  </ExternalLink>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Resources */}
-          <div>
-            <h4 className="text-[10px] font-mono text-[#3f3f46] uppercase tracking-[0.15em] mb-4">
-              {t('footer.links.resources')}
-            </h4>
-            <ul className="space-y-2.5">
-              {[
-                { label: t('footer.links.docs'), href: '#docs' },
-                { label: t('footer.links.faq'), href: '#faq' },
-              ].map((l) => (
-                <li key={l.href}>
-                  <button
-                    onClick={() => scrollTo(l.href)}
-                    className="text-[13px] text-[#52525b] hover:text-white transition-colors"
-                  >
-                    {l.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="text-[10px] font-mono text-[#3f3f46] uppercase tracking-[0.15em] mb-4">
-              {t('footer.links.legal')}
-            </h4>
-            <ul className="space-y-2.5">
-              {[
-                { label: t('footer.links.privacy'), href: '#' },
-                { label: t('footer.links.terms'), href: '#' },
-              ].map((l) => (
-                <li key={l.label}>
-                  <a href={l.href} className="text-[13px] text-[#52525b] hover:text-white transition-colors">
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {columns.map((column) => (
+            <nav key={column.title} aria-label={column.title}>
+              <h2 className="text-[10px] font-mono text-[#8a8a93] uppercase tracking-[0.15em] mb-4">{column.title}</h2>
+              <ul className="space-y-2.5">
+                {column.links.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} className={linkClass}>
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+                {column.title === t('footer.links.legal') && (
+                  <li>
+                    <button type="button" onClick={openCookieSettings} className={`${linkClass} text-left`}>
+                      {t('footer.links.cookieSettings')}
+                    </button>
+                  </li>
+                )}
+              </ul>
+            </nav>
+          ))}
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-white/[0.05] pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-[11px] text-[#27272a]"
-          >
-            {t('footer.copyright')}
-          </motion.p>
-          <p className="text-[11px] text-[#27272a] font-mono">{t('footer.madeWith')}</p>
+        <div className="border-t border-white/[0.06] pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[11px] text-[#8a8a93]">{t('footer.copyright', { year: __BUILD_YEAR__ })}</p>
+          <p className="text-[11px] text-[#8a8a93] font-mono">{t('footer.madeWith')}</p>
         </div>
       </div>
     </footer>

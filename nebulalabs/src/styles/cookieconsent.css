@@ -1,0 +1,49 @@
+/* vanilla-cookieconsent themed to the site (dark, cyan accent). Accept and Reject share the same weight. */
+#cc-main {
+  --cc-font-family: 'nebulaLabsFont', system-ui, sans-serif;
+  --cc-bg: #0a0a0a;
+  --cc-primary-color: #ffffff;
+  --cc-secondary-color: #a1a1aa;
+  --cc-btn-primary-bg: #ffffff;
+  --cc-btn-primary-color: #000000;
+  --cc-btn-primary-border-color: #ffffff;
+  --cc-btn-primary-hover-bg: #00a3ff;
+  --cc-btn-primary-hover-color: #000000;
+  --cc-btn-primary-hover-border-color: #00a3ff;
+  --cc-btn-secondary-bg: #ffffff;
+  --cc-btn-secondary-color: #000000;
+  --cc-btn-secondary-border-color: #ffffff;
+  --cc-btn-secondary-hover-bg: #00a3ff;
+  --cc-btn-secondary-hover-color: #000000;
+  --cc-btn-secondary-hover-border-color: #00a3ff;
+  --cc-separator-border-color: rgba(255, 255, 255, 0.08);
+  --cc-toggle-on-bg: #00a3ff;
+  --cc-toggle-off-bg: #52525b;
+  --cc-toggle-on-knob-bg: #000000;
+  --cc-toggle-off-knob-bg: #ffffff;
+  --cc-toggle-readonly-bg: #3f3f46;
+  --cc-toggle-readonly-knob-bg: #a1a1aa;
+  --cc-cookie-category-block-bg: #111111;
+  --cc-cookie-category-block-border: rgba(255, 255, 255, 0.08);
+  --cc-cookie-category-block-hover-bg: #161616;
+  --cc-cookie-category-block-hover-border: rgba(255, 255, 255, 0.12);
+  --cc-section-category-border: rgba(255, 255, 255, 0.08);
+  --cc-overlay-bg: rgba(0, 0, 0, 0.7);
+  --cc-footer-bg: #0a0a0a;
+  --cc-footer-color: #a1a1aa;
+  --cc-footer-border-color: rgba(255, 255, 255, 0.08);
+  --cc-link-color: #7ec8ff;
+  --cc-modal-border-radius: 0.75rem;
+  --cc-btn-border-radius: 0.5rem;
+}
+
+#cc-main .cm,
+#cc-main .pm {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#cc-main a:focus-visible,
+#cc-main button:focus-visible {
+  outline: 2px solid #00a3ff;
+  outline-offset: 2px;
+}

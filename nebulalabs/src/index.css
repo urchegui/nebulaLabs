@@ -2,7 +2,7 @@
 
 @theme {
   /* Resend-inspired: pure black, slate grays, cyan accent */
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-sans: system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 @font-face {

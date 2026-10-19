@@ -1,13 +1,35 @@
 # Nebula Labs
 
-> Deep-tech company specializing in quantum computing, AI, software development, and technology consulting.
+> Custom software, AI agents, end-to-end automation and external CTO services, backed by a team of mathematicians and engineers. Remote-first, global.
+
+Nebula Labs (NEBULA LABS SL, Spain) is a boutique deep-tech lab working on three fronts: services for companies, its own products, and open-source research.
 
 ## Services
-- Custom software development
-- Artificial intelligence consulting and implementation
-- Quantum computing R&D
-- Technology strategy consulting
+
+- End-to-end automation: we map your processes and automate them end to end, from operations to reporting.
+- Fractional CTO: technical leadership without a full-time hire: architecture, roadmap, vendors and team.
+- Custom software: distributed systems, APIs and cloud-native products, built to last.
+- Applied AI: LLMs, autonomous agents and MLOps, taken from prototype to production.
+- Quantum computing: quantum algorithms and hybrid classical-quantum architectures, applied where they make sense.
+- Technology consulting: independent technical judgment to decide what to build, buy or skip.
+
+## Products
+
+- AI Central: one data layer for all your business tools. It centralizes a company's software so decisions use data from all its sources.
+- SLR (Systematic Literature Review): find the most relevant papers for a systematic review, following PRISMA, and download the documentation. Open source.
+
+## Open source and research
+
+- Open-source repository: Systematic-Literature-Review (JavaScript, AGPL-3.0), by Nebula Labs on GitHub.
+- GitHub: https://github.com/Nebula-Labs-SL
+- LinkedIn: https://www.linkedin.com/company/nebula-labs-sl
 
 ## Contact
-- Website: https://nebulalabs.es
+
+- Website: https://nebulalabs.es (English) · https://nebulalabs.es/es/ (Spanish)
 - Email: hello@nebulalabs.es
+- We typically respond in less than 48 hours.
+
+## More
+
+- Full text of the home page: https://nebulalabs.es/llms-full.txt

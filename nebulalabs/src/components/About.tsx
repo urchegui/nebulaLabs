@@ -8,10 +8,10 @@ import isotipo from '../assets/ISOTIPO.svg';
 const VALUE_ICONS = [Shield, BookOpen, Telescope, GitMerge];
 
 function ValueCard({ value, i }: { value: { title: string; description: string }; i: number }) {
-  const { ref, onMouseMove, onMouseLeave } = useCardSpotlight();
+  const { ref, onMouseMove, onMouseLeave } = useCardSpotlight<HTMLLIElement>();
   const Icon = VALUE_ICONS[i];
   return (
-    <motion.div
+    <motion.li
       ref={ref}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
@@ -23,12 +23,12 @@ function ValueCard({ value, i }: { value: { title: string; description: string }
     >
       <div className="relative z-[1]">
         <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center mb-4">
-          <Icon size={15} className="text-[#71717a] group-hover:text-white transition-colors" />
+          <Icon size={15} aria-hidden="true" className="text-[#8a8a93] group-hover:text-white transition-colors" />
         </div>
         <h3 className="font-semibold text-white text-sm mb-1.5">{value.title}</h3>
-        <p className="text-[#71717a] text-xs leading-relaxed">{value.description}</p>
+        <p className="text-[#8a8a93] text-xs leading-relaxed">{value.description}</p>
       </div>
-    </motion.div>
+    </motion.li>
   );
 }
 
@@ -43,7 +43,7 @@ export default function About() {
   }) as { title: string; description: string }[];
 
   return (
-    <section id="about" className="relative py-20 sm:py-28 px-4 sm:px-6">
+    <section id="about" aria-labelledby="about-title" className="relative py-20 sm:py-28 px-4 sm:px-6">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-white/10 to-transparent" />
 
       <div className="max-w-6xl mx-auto">
@@ -55,19 +55,20 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <p className="text-[11px] font-mono text-[#52525b] tracking-[0.15em] uppercase mb-4">
+          <p className="text-[11px] font-mono text-[#8a8a93] tracking-[0.15em] uppercase mb-4">
             {t('about.badge')}
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">
+          <h2 id="about-title" className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">
             {t('about.title')}
           </h2>
-          <p className="text-[#71717a] text-base max-w-2xl mx-auto">
+          <p className="text-[#8a8a93] text-base max-w-2xl mx-auto mb-4">
             {t('about.subtitle')}
           </p>
+          <p className="text-white text-base max-w-2xl mx-auto">{t('about.unified')}</p>
         </motion.div>
 
         {/* Values */}
-        <motion.div
+        <motion.ul
           ref={ref}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
@@ -77,7 +78,7 @@ export default function About() {
           {values.map((value, i) => (
             <ValueCard key={i} value={value} i={i} />
           ))}
-        </motion.div>
+        </motion.ul>
 
         {/* Team block — also gets spotlight */}
         <motion.div
@@ -102,13 +103,13 @@ export default function About() {
               <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-4">
                 {t('about.team.title')}
               </h3>
-              <p className="text-[#71717a] leading-relaxed">
+              <p className="text-[#8a8a93] leading-relaxed">
                 {t('about.team.description')}
               </p>
             </div>
 
             {/* Orbital diagram */}
-            <div className="flex-shrink-0 w-64 h-64 sm:w-40 sm:h-40 md:w-44 md:h-44 relative">
+            <div aria-hidden="true" className="flex-shrink-0 w-44 h-44 relative">
               {['Q', 'A', 'I', 'S', 'R', 'D'].map((l, i) => {
                 const angle = (i / 6) * 2 * Math.PI;
                 const r = 66;
@@ -123,13 +124,13 @@ export default function About() {
                     animate={{ opacity: [0.4, 1, 0.4] }}
                     transition={{ repeat: Infinity, duration: 2.5, delay: i * 0.35 }}
                   >
-                    <span className="text-[10px] font-mono text-[#71717a]">{l}</span>
+                    <span className="text-[10px] font-mono text-[#8a8a93]">{l}</span>
                   </motion.div>
                 );
               })}
 
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-12 rounded-full flex items-center justify-center">
-                <img className="text-black font-bold text-base font-mono" src={isotipo} alt="isotipo nebula labs" />
+                <img src={isotipo} alt="" width={144} height={48} />
               </div>
 
               <motion.div

@@ -8,6 +8,11 @@ export function useMouseGlow() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Decorative motion: off for reduced-motion users and touch devices
+    if (!window.matchMedia('(pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (ref.current) ref.current.style.display = 'none';
+      return;
+    }
     let rafId: number;
     let targetX = window.innerWidth / 2;
     let targetY = window.innerHeight / 2;

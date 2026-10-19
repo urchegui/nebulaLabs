@@ -1,0 +1,92 @@
+import type { Plugin } from 'vite';
+import en from '../src/i18n/en';
+import { AI_CENTRAL, CONTACT_EMAIL, INDEXNOW_KEY, SITE_URL, SOCIALS } from '../src/config/site';
+import { indexablePages, pathFor } from '../src/config/routes';
+import { visibleHomeFaq } from '../src/content/faq';
+
+// Generates files derived from the same config as the app, so they never drift:
+// sitemap.xml (indexable pages + hreflang alternates), llms-full.txt and the IndexNow key file.
+
+const xmlEscape = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+function sitemap(lastmod: string): string {
+  const urls = indexablePages().flatMap(({ paths }) =>
+    Object.values(paths).map((path) => {
+      const alternates = Object.entries(paths)
+        .map(([lang, p]) => `    <xhtml:link rel="alternate" hreflang="${lang}" href="${xmlEscape(SITE_URL + p)}"/>`)
+        .concat(`    <xhtml:link rel="alternate" hreflang="x-default" href="${xmlEscape(SITE_URL + paths.en)}"/>`)
+        .join('\n');
+      return `  <url>\n    <loc>${xmlEscape(SITE_URL + path)}</loc>\n    <lastmod>${lastmod}</lastmod>\n${alternates}\n  </url>`;
+    }),
+  );
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${urls.join('\n')}
+</urlset>
+`;
+}
+
+function llmsFull(): string {
+  const services = Object.values(en.services.items);
+  const faq = visibleHomeFaq().map((key) => en.faq.items[key]);
+  const lines = [
+    '# Nebula Labs',
+    '',
+    `> ${en.meta.home.description}`,
+    '',
+    `Full text of the home page (English). Spanish version: ${SITE_URL}${pathFor('home', 'es')}`,
+    '',
+    `## ${en.hero.title1} ${en.hero.title2}`,
+    '',
+    en.hero.subtitle,
+    '',
+    `## ${en.services.badge}`,
+    '',
+    ...services.map((s) => `- **${s.title}**: ${s.description} (${s.tags.join(', ')})`),
+    '',
+    `## ${en.products.badge}`,
+    '',
+    `- **${AI_CENTRAL.en.name}**: ${en.products.aiCentral.tagline}.`,
+    `- **${en.products.slr.name}** (${en.products.slr.badge}): ${en.products.slr.description}`,
+    '',
+    `## ${en.research.title}`,
+    '',
+    `- Open-source repository: ${en.research.repo.name} (${en.research.repo.language}, ${en.research.repo.license}).`,
+    `- ${en.research.follow}: ${SOCIALS.github} · ${SOCIALS.linkedin}`,
+    '',
+    `## ${en.about.title}`,
+    '',
+    en.about.subtitle,
+    '',
+    en.about.unified,
+    '',
+    ...en.about.values.map((v) => `- **${v.title}**: ${v.description}`),
+    '',
+    en.about.team.description,
+    '',
+    `## ${en.faq.title}`,
+    '',
+    ...faq.flatMap((item) => [`### ${item.q}`, '', item.a, '']),
+    `## ${en.contact.badge}`,
+    '',
+    `- Email: ${CONTACT_EMAIL}`,
+    `- ${en.contact.info.response}`,
+    `- ${en.contact.info.location}`,
+    `- Contact form: ${SITE_URL}/#contact`,
+    '',
+  ];
+  return lines.join('\n');
+}
+
+export function seoFiles(): Plugin {
+  return {
+    name: 'nebula-seo-files',
+    apply: 'build',
+    generateBundle() {
+      const lastmod = new Date().toISOString().slice(0, 10);
+      this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap(lastmod) });
+      this.emitFile({ type: 'asset', fileName: 'llms-full.txt', source: llmsFull() });
+      this.emitFile({ type: 'asset', fileName: `${INDEXNOW_KEY}.txt`, source: INDEXNOW_KEY });
+    },
+  };
+}

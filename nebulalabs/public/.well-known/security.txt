@@ -1,0 +1,4 @@
+Contact: mailto:hello@nebulalabs.es
+Expires: 2027-10-19T00:00:00.000Z
+Preferred-Languages: en, es
+Canonical: https://nebulalabs.es/.well-known/security.txt

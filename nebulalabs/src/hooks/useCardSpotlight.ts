@@ -8,10 +8,10 @@ import { useRef, useCallback } from 'react';
  *   const { ref, onMouseMove, onMouseLeave } = useCardSpotlight();
  *   <div ref={ref} onMouseMove={onMouseMove} onMouseLeave={onMouseLeave} />
  */
-export function useCardSpotlight() {
-  const ref = useRef<HTMLDivElement>(null);
+export function useCardSpotlight<T extends HTMLElement = HTMLDivElement>() {
+  const ref = useRef<T>(null);
 
-  const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+  const onMouseMove = useCallback((e: React.MouseEvent<T>) => {
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
