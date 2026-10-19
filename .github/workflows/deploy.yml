@@ -33,9 +33,18 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # Web3Forms access key is public by design (it ships in the client bundle)
+      - name: Check build variables
+        env:
+          WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY || secrets.WEB3FORMS_KEY }}
+        run: |
+          [ -n "$WEB3FORMS_KEY" ] || { echo "::error::WEB3FORMS_KEY is not set (Actions variable or secret)"; exit 1; }
+
       - uses: docker/build-push-action@v6
         with:
           context: ./nebulalabs
+          build-args: |
+            VITE_WEB3FORMS_KEY=${{ vars.WEB3FORMS_KEY || secrets.WEB3FORMS_KEY }}
           push: true
           tags: |
             ${{ env.IMAGE }}:${{ github.sha }}

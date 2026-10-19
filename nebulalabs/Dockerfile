@@ -9,6 +9,12 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
+
+# Public Web3Forms key, inlined by Vite into the bundle as import.meta.env.VITE_WEB3FORMS_KEY
+ARG VITE_WEB3FORMS_KEY
+RUN test -n "$VITE_WEB3FORMS_KEY" || (echo "VITE_WEB3FORMS_KEY build arg is required" && exit 1)
+ENV VITE_WEB3FORMS_KEY=$VITE_WEB3FORMS_KEY
+
 RUN npm run build
 
 # ---- Serve ----
