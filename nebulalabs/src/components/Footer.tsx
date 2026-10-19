@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Github, Twitter, Linkedin } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 import logoNebula from '../assets/LOGO.svg';
 
 const SOCIALS = [

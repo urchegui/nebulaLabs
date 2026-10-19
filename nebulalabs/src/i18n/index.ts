@@ -8,7 +8,7 @@ i18n.use(initReactI18next).init({
     en: { translation: en },
     es: { translation: es },
   },
-  lng: localStorage.getItem('nebula-lang') || 'en',
+  lng: (typeof localStorage !== 'undefined' && localStorage.getItem('nebula-lang')) || 'en',
   fallbackLng: 'en',
   interpolation: { escapeValue: false },
 });
