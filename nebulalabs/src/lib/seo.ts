@@ -1,6 +1,6 @@
 import i18n from '../i18n';
 import headingFont from '../assets/fonts/GoodTimesRg.otf?url';
-import { AI_CENTRAL, FLAGS, SEARCH_VERIFICATION, SITE_NAME, SITE_URL, SOCIALS, type Lang } from '../config/site';
+import { AI_CENTRAL, AI_DISTRIBUTION, FLAGS, SEARCH_VERIFICATION, SERVICE_ORDER, SITE_NAME, SITE_URL, SOCIALS, type Lang } from '../config/site';
 import { LEGAL } from '../config/legal';
 import { alternatesFor, isIndexable, pathFor, type Route } from '../config/routes';
 import { visibleHomeFaq } from '../content/faq';
@@ -9,8 +9,6 @@ type HeadElement = { type: string; props: Record<string, string>; children?: str
 
 const OG_LOCALE: Record<Lang, string> = { en: 'en_US', es: 'es_ES' };
 const abs = (path: string) => `${SITE_URL}${path}`;
-
-const SERVICE_KEYS = ['automation', 'cto', 'software', 'ai', 'quantum', 'consulting'] as const;
 
 function ogImage(route: Route): string {
   return route.page === 'aiCentral' ? `/og/ai-central-${route.lang}.png` : `/og/home-${route.lang}.png`;
@@ -54,6 +52,24 @@ function organization(lang: Lang) {
   };
 }
 
+// AI Distribution (built on AI Central): card description + the 6 confirmed capabilities
+function aiDistribution(lang: Lang) {
+  const t = i18n.getFixedT(lang);
+  const capabilities = t('aiCentralPage.aiDistribution.capabilities', { returnObjects: true }) as { title: string; text: string }[];
+  return {
+    '@type': 'SoftwareApplication',
+    '@id': `${SITE_URL}/#ai-distribution`,
+    name: AI_DISTRIBUTION[lang].name,
+    description: t('products.aiDistribution.description'),
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    inLanguage: lang,
+    featureList: capabilities.map((c) => `${c.title}: ${c.text}`),
+    ...(FLAGS.showAiCentralLink && { url: abs(`${pathFor('aiCentral', lang)}#${AI_DISTRIBUTION[lang].anchor}`) }),
+    publisher: { '@id': `${SITE_URL}/#organization` },
+  };
+}
+
 function homeGraph(lang: Lang) {
   const t = i18n.getFixedT(lang);
   const url = abs(pathFor('home', lang));
@@ -79,7 +95,7 @@ function homeGraph(lang: Lang) {
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: t('services.badge'),
-        itemListElement: SERVICE_KEYS.map((key) => ({
+        itemListElement: SERVICE_ORDER.map((key) => ({
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
@@ -90,6 +106,7 @@ function homeGraph(lang: Lang) {
         })),
       },
     },
+    aiDistribution(lang),
     {
       '@type': 'FAQPage',
       '@id': `${url}#faq`,
@@ -117,6 +134,7 @@ function aiCentralGraph(lang: Lang) {
       inLanguage: lang,
       publisher: { '@id': `${SITE_URL}/#organization` },
     },
+    aiDistribution(lang),
   ];
 }
 

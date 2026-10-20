@@ -9,6 +9,6 @@ const placeholder = (label: string) =>
   )}`;
 
 export const LOGO_WALL_FIXTURE: LogoGroups = {
-  clients: [1, 2, 3, 4].map((n) => ({ name: `Client ${n}`, src: placeholder(`CLIENT ${n}`), approved: true })),
-  team: [1, 2, 3].map((n) => ({ name: `Company ${n}`, src: placeholder(`COMPANY ${n}`), approved: true })),
+  clients: [1, 2, 3, 4].map((n) => ({ name: `Client ${n}`, src: placeholder(`CLIENT ${n}`), approved: true, height: 28, ratio: 4 })),
+  team: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => ({ name: `Company ${n}`, src: placeholder(`CO ${n}`), approved: true, height: 28, ratio: 4 })),
 };

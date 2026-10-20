@@ -73,7 +73,7 @@ const es: typeof en = {
   },
   logoWall: {
     clients: 'Clientes con los que construimos',
-    team: 'Antes de Nebula, nuestros fundadores trabajaron para',
+    team: 'Nuestro equipo ha trabajado con',
   },
   services: {
     badge: 'Servicios',
@@ -99,7 +99,7 @@ const es: typeof en = {
       },
       ai: {
         title: 'IA aplicada',
-        description: 'LLMs, agentes autónomos y MLOps, del prototipo a producción.',
+        description: 'LLMs, agentes autónomos y MLOps, del diseño de la IA a producción.',
         tags: ['LLMs', 'Redes Neuronales', 'Agentes', 'MLOps'],
       },
       quantum: {
@@ -109,8 +109,8 @@ const es: typeof en = {
       },
       consulting: {
         title: 'Consultoría tecnológica',
-        description: 'Criterio técnico independiente para decidir qué construir, qué comprar y qué descartar.',
-        tags: ['Construir o comprar', 'Estrategia tecnológica', 'Revisión independiente'], // PROVISIONAL
+        description: 'Análisis técnico independiente para decidir qué construir, comprar o descartar, y cuándo.',
+        tags: ['Construir o comprar', 'Estrategia tecnológica', 'Revisión independiente'],
       },
     },
   },
@@ -119,9 +119,9 @@ const es: typeof en = {
     badge: 'Cómo trabajamos',
     title: 'Del diagnóstico al traspaso',
     steps: {
-      diagnose: { title: 'Diagnóstico', text: 'Estudiamos tus procesos, sistemas y objetivos antes de proponer nada.' },
+      diagnose: { title: 'Diagnóstico', text: 'Analizamos tus procesos, objetivos y equipos, y te entregamos una hoja de ruta técnica para decidir con criterio.' },
       build: { title: 'Construcción', text: 'Construimos en iteraciones cortas, revisando el avance contigo.' },
-      run: { title: 'Operación y traspaso', text: 'Lo operamos en producción y lo traspasamos a tu equipo, documentado.' },
+      run: { title: 'Operación y traspaso', text: 'Lo llevamos a producción y te lo entregamos documentado, o seguimos operándolo y manteniéndolo por ti.' },
     },
   },
   products: {
@@ -129,6 +129,12 @@ const es: typeof en = {
     title: 'Productos que construimos', // PROVISIONAL
     aiCentral: {
       tagline: 'Todo tu software, una sola capa de datos',
+      cta: 'Saber más',
+    },
+    aiDistribution: {
+      badge: 'Construido sobre IA Central',
+      description:
+        'Tu asistente comercial sobre IA Central: precios, stock, históricos y análisis prescriptivo, directamente desde tu ERP.',
       cta: 'Saber más',
     },
     slr: {
@@ -143,7 +149,7 @@ const es: typeof en = {
     badge: 'Quiénes somos',
     title: 'Un laboratorio obsesionado con los problemas difíciles',
     subtitle:
-      'Somos científicos, ingenieros y constructores. Creemos que la tecnología más importante de la próxima década vive en la intersección de la física cuántica, la inteligencia de las máquinas y la artesanía rigurosa del software.',
+      'Somos científicos e ingenieros que construyen. Creemos que la tecnología que más importa, hoy y durante la próxima década, está donde se cruzan la IA, la computación cuántica y la ingeniería de software rigurosa.',
     unified: 'Servicios, productos e investigación abierta bajo un mismo techo, con el mismo equipo detrás.',
     values: [
       {
@@ -330,6 +336,23 @@ const es: typeof en = {
     features: [],
     securityTitle: 'Seguridad y datos', // PROVISIONAL
     security: [],
+    aiDistribution: {
+      badge: 'Construido sobre IA Central',
+      title: 'IA Distribución: todo lo que necesita tu equipo comercial, en una conversación',
+      subtitle:
+        'Conectada a tu ERP a través de IA Central, da a cada comercial precios, stock, históricos y recomendaciones sin salir de la conversación.',
+      capabilities: [
+        { title: 'Precios y stock', text: 'Consulta precios y disponibilidad de productos directamente desde tu ERP.' },
+        { title: 'Históricos', text: 'Pedidos, conversaciones y condiciones anteriores de cualquier cliente.' },
+        { title: 'Información de clientes', text: 'Todo lo que tu empresa sabe de una cuenta, en una sola respuesta.' },
+        { title: 'Qué vender y a quién', text: 'Qué productos ofrecer y a qué clientes dar prioridad.' },
+        { title: 'Análisis prescriptivo', text: 'Siguientes pasos recomendados según la situación de cada comercial.' },
+        { title: 'Conectada a tu ERP', text: 'Funciona sobre los sistemas que tu empresa ya usa, a través de IA Central.' },
+      ],
+      // PROVISIONAL — pendiente @marketing (snippet)
+      snippet: ['¿Precio y stock del SKU-1042?', '¿Qué le ofrezco a esta cuenta ahora?'],
+      snippetObject: 'distribucion',
+    },
     custom: {
       title: '¿Lo necesitas a medida?',
       text: 'Si tu caso necesita una solución a medida, nuestro servicio de automatización integral puede construirla contigo.', // PROVISIONAL

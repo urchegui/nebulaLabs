@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
-import { FLAGS } from '../config/site';
+import { AI_DISTRIBUTION, FLAGS } from '../config/site';
 import { sectionHref } from '../config/routes';
 import { AI_CENTRAL_FAQ } from '../content/faq';
 import { useRoute } from '../lib/route';
 import { ctaClick } from '../lib/leadIntent';
 import FAQ from '../components/FAQ';
 import Contact from '../components/Contact';
-import { Chip, SectionHeader } from '../components/ui';
+import { Chip, CodeWindow, SectionHeader, kw, str } from '../components/ui';
 
 const HOW = ['connect', 'unify', 'decide'] as const;
 
@@ -21,10 +21,14 @@ export default function AiCentralPage() {
   const security = t('aiCentralPage.security', { returnObjects: true }) as string[];
   const ctaLabel = FLAGS.aiCentralCta === 'beta' ? t('aiCentralPage.ctaBeta') : t('aiCentralPage.ctaDemo');
 
-  const cta = (location: string) => (
+  const capabilities = t('aiCentralPage.aiDistribution.capabilities', { returnObjects: true }) as { title: string; text: string }[];
+  const questions = t('aiCentralPage.aiDistribution.snippet', { returnObjects: true }) as string[];
+  const snippetObject = t('aiCentralPage.aiDistribution.snippetObject');
+
+  const cta = (location: string, source = 'ai-central') => (
     <a
       href="#contact"
-      onClick={() => ctaClick(location)}
+      onClick={() => ctaClick(location, { source, need: 'product' })}
       className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm text-black bg-white hover:bg-[#00a3ff] transition-colors"
     >
       {ctaLabel}
@@ -72,6 +76,39 @@ export default function AiCentralPage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section
+        id={AI_DISTRIBUTION[lang].anchor}
+        aria-labelledby="ai-distribution-title"
+        className="py-20 px-4 sm:px-6 scroll-mt-20"
+      >
+        <div className="max-w-5xl mx-auto">
+          <SectionHeader
+            id="ai-distribution-title"
+            badge={t('aiCentralPage.aiDistribution.badge')}
+            title={t('aiCentralPage.aiDistribution.title')}
+            subtitle={t('aiCentralPage.aiDistribution.subtitle')}
+            className="mb-12"
+          />
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+            {capabilities.map((c) => (
+              <li key={c.title} className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6">
+                <h3 className="text-white font-semibold mb-2">{c.title}</h3>
+                <p className="text-[#8a8a93] text-sm leading-relaxed">{c.text}</p>
+              </li>
+            ))}
+          </ul>
+          <CodeWindow className="max-w-xl mx-auto mb-10">
+            {questions.map((q) => (
+              <p key={q}>
+                <span className={kw}>await</span> <span className="text-white">nebula.{snippetObject}.</span>
+                <span className={kw}>ask</span>(<span className={str}>"{q}"</span>);
+              </p>
+            ))}
+          </CodeWindow>
+          <div className="text-center">{cta('ai_distribution', 'ai-distribution')}</div>
         </div>
       </section>
 

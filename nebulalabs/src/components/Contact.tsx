@@ -48,14 +48,16 @@ export default function Contact({ defaultNeed, defaultSource }: ContactProps) {
   const [coolingDown, setCoolingDown] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // CTAs elsewhere on the page set the source (and sometimes the need) before scrolling here
-  useEffect(() => {
-    if (defaultSource) return;
-    return subscribeLeadIntent((intent) => {
-      setSource(intent.source);
-      if (intent.need) setForm((f) => ({ ...f, need: intent.need! }));
-    });
-  }, [defaultSource]);
+  // CTAs on the page set the source (and sometimes the need) before scrolling here;
+  // defaultSource only applies until one of them is clicked
+  useEffect(
+    () =>
+      subscribeLeadIntent((intent) => {
+        setSource(intent.source);
+        if (intent.need) setForm((f) => ({ ...f, need: intent.need! }));
+      }),
+    [],
+  );
 
   const update = (field: keyof FormState, value: string | boolean) => {
     setForm((f) => ({ ...f, [field]: value }));

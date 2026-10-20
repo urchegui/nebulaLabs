@@ -6,16 +6,23 @@ Nebula Labs (NEBULA LABS SL, Spain) is a boutique deep-tech lab working on three
 
 ## Services
 
+- Applied AI: LLMs, autonomous agents and MLOps, from AI design to production.
+- Custom software: distributed systems, APIs and cloud-native products, built to last.
+- Quantum computing: quantum algorithms and hybrid classical-quantum architectures, applied where they make sense.
 - End-to-end automation: we map your processes and automate them end to end, from operations to reporting.
 - Fractional CTO: technical leadership without a full-time hire: architecture, roadmap, vendors and team.
-- Custom software: distributed systems, APIs and cloud-native products, built to last.
-- Applied AI: LLMs, autonomous agents and MLOps, taken from prototype to production.
-- Quantum computing: quantum algorithms and hybrid classical-quantum architectures, applied where they make sense.
-- Technology consulting: independent technical judgment to decide what to build, buy or skip.
+- Technology consulting: independent technical discovery to decide what to build, buy or skip, and when.
 
 ## Products
 
 - AI Central: one data layer for all your business tools. It centralizes a company's software so decisions use data from all its sources.
+- AI Distribution (built on AI Central): your sales assistant on top of AI Central: prices, stock, account history and prescriptive analysis, straight from your ERP. Capabilities:
+  - Prices & stock: check product prices and availability straight from your ERP.
+  - Account history: past orders, conversations and conditions for any customer.
+  - Customer insight: everything your company knows about an account, in one answer.
+  - What to sell, and to whom: which products to offer and which customers to prioritize.
+  - Prescriptive analysis: recommended next steps based on each rep's situation.
+  - Connected to your ERP: works on the systems your company already uses, through AI Central.
 - SLR (Systematic Literature Review): find the most relevant papers for a systematic review, following PRISMA, and download the documentation. Open source.
 
 ## Open source and research

@@ -1,6 +1,6 @@
 import type { Plugin } from 'vite';
 import en from '../src/i18n/en';
-import { AI_CENTRAL, CONTACT_EMAIL, INDEXNOW_KEY, SITE_URL, SOCIALS } from '../src/config/site';
+import { AI_CENTRAL, AI_DISTRIBUTION, CONTACT_EMAIL, INDEXNOW_KEY, SERVICE_ORDER, SITE_URL, SOCIALS } from '../src/config/site';
 import { indexablePages, pathFor } from '../src/config/routes';
 import { visibleHomeFaq } from '../src/content/faq';
 
@@ -27,7 +27,7 @@ ${urls.join('\n')}
 }
 
 function llmsFull(): string {
-  const services = Object.values(en.services.items);
+  const services = SERVICE_ORDER.map((key) => en.services.items[key]);
   const faq = visibleHomeFaq().map((key) => en.faq.items[key]);
   const lines = [
     '# Nebula Labs',
@@ -47,6 +47,8 @@ function llmsFull(): string {
     `## ${en.products.badge}`,
     '',
     `- **${AI_CENTRAL.en.name}**: ${en.products.aiCentral.tagline}.`,
+    `- **${AI_DISTRIBUTION.en.name}** (${en.products.aiDistribution.badge}): ${en.products.aiDistribution.description}`,
+    ...en.aiCentralPage.aiDistribution.capabilities.map((c) => `  - ${c.title}: ${c.text}`),
     `- **${en.products.slr.name}** (${en.products.slr.badge}): ${en.products.slr.description}`,
     '',
     `## ${en.research.title}`,

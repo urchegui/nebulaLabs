@@ -1,22 +1,24 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ArrowRight, Atom, Brain, Code2, Compass, Network, Workflow } from 'lucide-react';
-import type { Need } from '../config/site';
+import { SERVICE_ORDER, type Need, type ServiceKey } from '../config/site';
 import { sectionHref } from '../config/routes';
 import { useRoute } from '../lib/route';
 import { ctaClick } from '../lib/leadIntent';
 import { useCardSpotlight } from '../hooks/useCardSpotlight';
 import { Chip, SectionHeader } from './ui';
 
-// The first two are the featured services
-const SERVICES: { key: string; icon: typeof Atom; need?: Need; featured?: boolean }[] = [
-  { key: 'automation', icon: Workflow, need: 'automation', featured: true },
-  { key: 'cto', icon: Compass, need: 'fractional-cto', featured: true },
-  { key: 'software', icon: Code2, need: 'software' },
-  { key: 'ai', icon: Brain, need: 'ai' },
-  { key: 'quantum', icon: Atom, need: 'quantum' },
-  { key: 'consulting', icon: Network },
-];
+const DETAILS: Record<ServiceKey, { icon: typeof Atom; need?: Need }> = {
+  ai: { icon: Brain, need: 'ai' },
+  software: { icon: Code2, need: 'software' },
+  quantum: { icon: Atom, need: 'quantum' },
+  automation: { icon: Workflow, need: 'automation' },
+  cto: { icon: Compass, need: 'fractional-cto' },
+  consulting: { icon: Network },
+};
+
+// Order from config (AI · Software · Quantum · then the rest). The first row of three is featured.
+const SERVICES = SERVICE_ORDER.map((key, i) => ({ key, ...DETAILS[key], featured: i < 3 }));
 
 function ServiceCard({ service, index }: { service: (typeof SERVICES)[number]; index: number }) {
   const { t } = useTranslation();
@@ -36,7 +38,7 @@ function ServiceCard({ service, index }: { service: (typeof SERVICES)[number]; i
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.06 }}
       className={`spotlight-card group relative bg-black hover:bg-[#0a0a0a] transition-colors duration-200 ${
-        service.featured ? 'lg:col-span-6 p-6 sm:p-10' : 'lg:col-span-3 p-5 sm:p-7'
+        service.featured ? 'lg:col-span-4 p-6 sm:p-9' : 'lg:col-span-4 p-5 sm:p-7'
       }`}
     >
       <div className="absolute top-0 left-0 right-0 h-px bg-[#00a3ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -47,7 +49,7 @@ function ServiceCard({ service, index }: { service: (typeof SERVICES)[number]; i
         <h3 id={titleId} className={`text-white font-semibold mb-2.5 ${service.featured ? 'text-2xl' : 'text-lg'}`}>
           {t(`services.items.${service.key}.title`)}
         </h3>
-        <p className={`text-[#8a8a93] leading-relaxed mb-5 ${service.featured ? 'text-base' : 'text-sm'}`}>
+        <p className={`text-[#8a8a93] leading-relaxed mb-5 ${service.featured ? 'text-sm lg:text-base' : 'text-sm'}`}>
           {t(`services.items.${service.key}.description`)}
         </p>
         <div className="flex flex-wrap gap-1.5 mb-6">

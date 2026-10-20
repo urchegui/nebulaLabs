@@ -71,7 +71,7 @@ export default {
   },
   logoWall: {
     clients: "Clients we've built with",
-    team: 'Before Nebula, our founders built for',
+    team: 'Our team has worked with',
   },
   services: {
     badge: 'Services',
@@ -97,7 +97,7 @@ export default {
       },
       ai: {
         title: 'Applied AI',
-        description: 'LLMs, autonomous agents and MLOps, taken from prototype to production.',
+        description: 'LLMs, autonomous agents and MLOps, from AI design to production.',
         tags: ['LLMs', 'Neural Networks', 'Agents', 'MLOps'],
       },
       quantum: {
@@ -107,8 +107,8 @@ export default {
       },
       consulting: {
         title: 'Technology consulting',
-        description: 'Independent technical judgment to decide what to build, buy or skip.',
-        tags: ['Build vs. buy', 'Tech strategy', 'Independent review'], // PROVISIONAL
+        description: 'Independent technical discovery to decide what to build, buy or skip, and when.',
+        tags: ['Build vs. buy', 'Tech strategy', 'Independent review'],
       },
     },
   },
@@ -117,9 +117,9 @@ export default {
     badge: 'How we work',
     title: 'From diagnosis to hand-over',
     steps: {
-      diagnose: { title: 'Diagnose', text: 'We study your processes, systems and goals before proposing anything.' },
+      diagnose: { title: 'Diagnose', text: 'We assess your processes, goals and teams, and deliver a technical roadmap to guide your decisions.' },
       build: { title: 'Build', text: 'We build in short iterations, with you reviewing progress along the way.' },
-      run: { title: 'Run & hand over', text: 'We run it in production and hand it over to your team, documented.' },
+      run: { title: 'Run & hand over', text: 'We take it to production and hand it over documented, or keep running and maintaining it for you.' },
     },
   },
   products: {
@@ -127,6 +127,12 @@ export default {
     title: 'Products we build', // PROVISIONAL
     aiCentral: {
       tagline: 'One data layer for all your business tools',
+      cta: 'Learn more',
+    },
+    aiDistribution: {
+      badge: 'Built on AI Central',
+      description:
+        'Your sales assistant on top of AI Central: prices, stock, account history and prescriptive analysis, straight from your ERP.',
       cta: 'Learn more',
     },
     slr: {
@@ -141,7 +147,7 @@ export default {
     badge: 'About us',
     title: 'A lab obsessed with hard problems',
     subtitle:
-      "We're scientists, engineers, and builders. We believe the most important technology of the next decade lives at the intersection of quantum physics, machine intelligence, and rigorous software craftsmanship.",
+      "We're scientists, engineers and builders. We believe the technology that matters most, today and over the next decade, lives where AI, quantum computing and rigorous software engineering meet.",
     unified: 'Services, products and open research under one roof, with the same team behind all three.',
     values: [
       {
@@ -328,6 +334,23 @@ export default {
     features: [] as { title: string; text: string }[],
     securityTitle: 'Security & data', // PROVISIONAL
     security: [] as string[],
+    aiDistribution: {
+      badge: 'Built on AI Central',
+      title: 'AI Distribution: everything your sales team needs, in one conversation',
+      subtitle:
+        'Connected to your ERP through AI Central, it gives every sales rep prices, stock, history and recommendations without leaving the conversation.',
+      capabilities: [
+        { title: 'Prices & stock', text: 'Check product prices and availability straight from your ERP.' },
+        { title: 'Account history', text: 'Past orders, conversations and conditions for any customer.' },
+        { title: 'Customer insight', text: 'Everything your company knows about an account, in one answer.' },
+        { title: 'What to sell, and to whom', text: 'Which products to offer and which customers to prioritize.' },
+        { title: 'Prescriptive analysis', text: "Recommended next steps based on each rep's situation." },
+        { title: 'Connected to your ERP', text: 'Works on the systems your company already uses, through AI Central.' },
+      ],
+      // PROVISIONAL — pendiente @marketing (snippet)
+      snippet: ['Price and stock of SKU-1042?', 'What should I offer this account next?'],
+      snippetObject: 'distribution',
+    },
     custom: {
       title: 'Need it built for you?', // PROVISIONAL
       text: 'If your case needs a custom solution, our end-to-end automation service can build it with you.', // PROVISIONAL

@@ -39,8 +39,8 @@ export default function Footer() {
       links: [
         { label: t('footer.links.legalNotice'), href: pathFor('legalNotice', lang) },
         { label: t('footer.links.privacy'), href: pathFor('privacy', lang) },
-        { label: t('footer.links.cookies'), href: pathFor('cookies', lang) },
         { label: t('footer.links.terms'), href: `${pathFor('legalNotice', lang)}#${TERMS_ANCHOR[lang]}` },
+        { label: t('footer.links.cookies'), href: pathFor('cookies', lang) },
       ],
     },
   ];

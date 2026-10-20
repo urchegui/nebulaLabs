@@ -24,13 +24,23 @@ export const AI_CENTRAL = {
   es: { name: 'IA Central', slug: 'ia-central' },
 } as const;
 
+// Product built on AI Central. `anchor` = its section on the AI Central landing.
+export const AI_DISTRIBUTION = {
+  en: { name: 'AI Distribution', anchor: 'ai-distribution' },
+  es: { name: 'IA Distribución', anchor: 'ia-distribucion' },
+} as const;
+
+// Services order on the page, in the JSON-LD OfferCatalog and in llms(-full).txt
+export const SERVICE_ORDER = ['ai', 'software', 'quantum', 'automation', 'cto', 'consulting'] as const;
+export type ServiceKey = (typeof SERVICE_ORDER)[number];
+
 export const FLAGS = {
   /** Hero stats strip. No verifiable figures today. */
   showHeroStats: false,
   /** Logo wall (home, between hero and "What we do") */
-  showLogoWall: false,
+  showLogoWall: true,
   showClientsGroup: false,
-  showTeamGroup: false,
+  showTeamGroup: true,
   /** Academic collaborations block in #research */
   showCollaborations: false,
   /** AI Central landing: links from nav/products, indexing, sitemap and SoftwareApplication JSON-LD */
