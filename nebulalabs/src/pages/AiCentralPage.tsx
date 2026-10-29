@@ -11,7 +11,6 @@ import ProductMock from '../components/landing/ProductMock';
 import HowItWorks from '../components/landing/HowItWorks';
 import Principles from '../components/landing/Principles';
 import TeamTabs from '../components/landing/TeamTabs';
-import PhaseTimeline from '../components/landing/PhaseTimeline';
 import { IllustrativeTag, Nebula } from '../components/landing/parts';
 
 // AI Central / IA Central landing. Pilot phase: no figures, no clients, every mock labelled
@@ -79,7 +78,13 @@ export default function AiCentralPage() {
         <Nebula tone="cyan" position="top" />
         <div className="relative max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center">
           <div>
-            <p className="text-[11px] font-mono text-[#8a8a93] tracking-[0.15em] uppercase mb-5">{t('aiCentralPage.hero.eyebrow')}</p>
+            {/* Product name: the first thing read on this page */}
+            <p className="flex items-center gap-3 sm:gap-4 mb-6">
+              <span aria-hidden="true" className="aic-core shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full" />
+              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-[0.02em] bg-gradient-to-r from-white via-[#bfe3ff] to-[#00a3ff] bg-clip-text text-transparent">
+                {t('aiCentralPage.hero.eyebrow')}
+              </span>
+            </p>
             {FLAGS.showPilotBadge && (
               <p className="inline-flex items-center gap-2 border border-white/[0.08] bg-white/[0.03] rounded-full px-4 py-1.5 mb-6 text-[11px] font-mono text-[#a1a1aa] tracking-[0.1em] uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00a3ff]" aria-hidden="true" />
@@ -209,7 +214,6 @@ export default function AiCentralPage() {
         </div>
       </section>
 
-      <PhaseTimeline />
 
       <FAQ id="ai-central-faq" itemsKey="aiCentralPage.faq" keys={AI_CENTRAL_FAQ} titleKey="aiCentralPage.faqTitle" showContactCta={false} />
 

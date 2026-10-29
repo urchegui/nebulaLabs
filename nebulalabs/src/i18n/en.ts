@@ -7,7 +7,7 @@ export default {
         'Custom software, AI agents, end-to-end automation and external CTO services, backed by a team of mathematicians and engineers. Remote-first, global.',
     },
     aiCentral: {
-      title: 'AI Central — One data layer for all your business tools',
+      title: 'AI Central — One AI layer for all your business tools',
       description:
         'Connect your ERP, CRM, e-commerce and inventory in one governed layer. Ask questions, get traceable answers and decide with your own data.',
     },
@@ -126,7 +126,7 @@ export default {
     badge: 'Products',
     title: 'Products we build', // PROVISIONAL
     aiCentral: {
-      tagline: 'One data layer for all your business tools',
+      tagline: 'One AI layer for all your business tools',
       cta: 'Learn more',
     },
     aiDistribution: {
@@ -318,8 +318,8 @@ export default {
     illustrative: 'Illustrative',
     hero: {
       badge: 'AI Central · Pilot partners wanted',
-      eyebrow: 'AI Central · Pilot',
-      title: 'One data layer for all your business tools',
+      eyebrow: 'AI Central',
+      title: 'One AI layer for all your business tools',
       subtitle:
         'AI Central connects your ERP, CRM, e-commerce, inventory and documents into one governed layer, so every team decides with reliable, traceable data.',
       ctaPrimary: 'Book a discovery workshop',
@@ -460,17 +460,6 @@ export default {
       bandText:
         'Chosen with your CTO based on data policy, latency, volume and budget: self-hosted models or managed AI providers, never locked into a single model.',
       cta: 'Request the technical brief (under NDA)', // PROVISIONAL — pendiente @marketing
-    },
-    phases: {
-      eyebrow: 'Adoption in phases',
-      title: 'Start small, measure, then grow',
-      phaseLabel: 'Phase',
-      steps: [
-        { title: 'Discovery', text: 'Goals, sources, permissions and priority metrics.', deliverable: 'Scope and success criteria' },
-        { title: 'Data pilot', text: 'Quality of a first set of sources and entities.', deliverable: 'First traceable dashboard' },
-        { title: 'AI pilot', text: 'Real questions, permissions and accuracy.', deliverable: 'Assistant evaluated in a controlled environment' },
-        { title: 'Expansion', text: 'New sources and recommendations.', deliverable: 'Measured evolution plan' },
-      ],
     },
     faqTitle: 'Frequently asked questions',
     faq: {

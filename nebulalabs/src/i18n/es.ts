@@ -9,7 +9,7 @@ const es: typeof en = {
         'Software a medida, agentes de IA, automatización integral y CTO externo, con un equipo de matemáticos e ingenieros. Remote-first, global.',
     },
     aiCentral: {
-      title: 'IA Central — Todo tu software en una sola capa de datos',
+      title: 'IA Central — Una capa de inteligencia artificial para todas tus herramientas',
       description:
         'Conecta ERP, CRM, e-commerce e inventario en una capa gobernada. Pregunta, obtén respuestas trazables y decide con los datos de tu empresa.',
     },
@@ -128,7 +128,7 @@ const es: typeof en = {
     badge: 'Productos',
     title: 'Productos que construimos', // PROVISIONAL
     aiCentral: {
-      tagline: 'Todo tu software, una sola capa de datos',
+      tagline: 'Una capa de inteligencia artificial para todas tus herramientas',
       cta: 'Saber más',
     },
     aiDistribution: {
@@ -320,8 +320,8 @@ const es: typeof en = {
     illustrative: 'Ilustrativo',
     hero: {
       badge: 'IA Central · Buscamos empresas piloto',
-      eyebrow: 'IA Central · Piloto',
-      title: 'Todo tu software, una sola capa de datos',
+      eyebrow: 'IA Central',
+      title: 'Una capa de inteligencia artificial para todas tus herramientas',
       subtitle:
         'IA Central conecta tu ERP, CRM, comercio electrónico, inventario y documentos en una capa gobernada para que cada equipo decida con datos fiables y trazables.',
       ctaPrimary: 'Reserva un taller de descubrimiento',
@@ -462,17 +462,6 @@ const es: typeof en = {
       bandText:
         'Se elige con tu CTO según política de datos, latencia, volumen y presupuesto: modelos autoalojados o proveedores gestionados, sin depender de un único modelo.',
       cta: 'Solicita el dossier técnico (bajo NDA)', // PROVISIONAL — pendiente @marketing
-    },
-    phases: {
-      eyebrow: 'Adopción por fases',
-      title: 'Empezar pequeño, medir y crecer',
-      phaseLabel: 'Fase',
-      steps: [
-        { title: 'Descubrimiento', text: 'Objetivos, fuentes, permisos y métricas prioritarias.', deliverable: 'Alcance y criterios de éxito' },
-        { title: 'Piloto de datos', text: 'Calidad de un primer conjunto de fuentes y entidades.', deliverable: 'Primer dashboard trazable' },
-        { title: 'Piloto con IA', text: 'Preguntas reales, permisos y precisión.', deliverable: 'Asistente evaluado en entorno controlado' },
-        { title: 'Extensión', text: 'Nuevas fuentes y recomendaciones.', deliverable: 'Plan de evolución medido' },
-      ],
     },
     faqTitle: 'Preguntas frecuentes',
     faq: {
