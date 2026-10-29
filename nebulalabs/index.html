@@ -7,6 +7,9 @@
   <!-- Title, description, canonical, hreflang, Open Graph, Twitter Card and JSON-LD are generated
        per page at build time (src/lib/seo.ts). Google Analytics only loads after cookie consent. -->
   <title>Nebula Labs</title>
+  <!-- Marks JS support before first paint so animations can start from their initial state.
+       Its sha256 hash is allowed in the CSP (nginx.conf). Keep it byte-identical. -->
+  <script>document.documentElement.classList.add('js')</script>
   <meta name="theme-color" content="#050510" />
   <meta name="color-scheme" content="dark" />
   <link rel="icon" href="./src/assets/nebulafavicon.ico" sizes="any" />

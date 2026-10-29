@@ -19,4 +19,4 @@ export type HomeFaqKey = (typeof HOME_FAQ)[number];
 export const visibleHomeFaq = (): HomeFaqKey[] =>
   HOME_FAQ.filter((key) => key !== 'papers' || FLAGS.showPapersFaq);
 
-export const AI_CENTRAL_FAQ = ['what', 'custom'] as const;
+export const AI_CENTRAL_FAQ = ['replace', 'numbers', 'access', 'models', 'start'] as const;

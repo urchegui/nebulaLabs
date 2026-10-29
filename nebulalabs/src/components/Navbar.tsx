@@ -65,7 +65,11 @@ export default function Navbar() {
           <ul className="hidden md:flex items-center gap-7">
             {SECTIONS.map((key) => (
               <li key={key}>
-                <a href={sectionHref(lang, key)} className="text-[13px] text-[#a1a1aa] hover:text-white transition-colors duration-150 font-medium">
+                <a
+                  href={sectionHref(lang, key)}
+                  aria-current={key === 'products' && route.page === 'aiCentral' ? 'page' : undefined}
+                  className="text-[13px] text-[#a1a1aa] hover:text-white aria-[current=page]:text-white transition-colors duration-150 font-medium"
+                >
                   {t(`nav.${key}`)}
                 </a>
               </li>

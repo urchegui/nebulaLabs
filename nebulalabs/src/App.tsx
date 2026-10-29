@@ -1,34 +1,11 @@
+import type { ComponentType } from 'react';
 import { useTranslation } from 'react-i18next';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ParticleField from './components/ParticleField';
 import MouseGlow from './components/MouseGlow';
-import HomePage from './pages/HomePage';
-import AiCentralPage from './pages/AiCentralPage';
-import LegalPage from './pages/LegalPage';
-import NotFoundPage from './pages/NotFoundPage';
-import CaseStudyPage from './pages/CaseStudyPage';
-import { useRoute } from './lib/route';
 
-function Page() {
-  const { page } = useRoute();
-  switch (page) {
-    case 'home':
-      return <HomePage />;
-    case 'aiCentral':
-      return <AiCentralPage />;
-    case 'legalNotice':
-    case 'privacy':
-    case 'cookies':
-      return <LegalPage doc={page} />;
-    case 'caseStudy':
-      return <CaseStudyPage />;
-    case 'notFound':
-      return <NotFoundPage />;
-  }
-}
-
-function App() {
+function App({ Page }: { Page: ComponentType }) {
   const { t } = useTranslation();
   return (
     <div className="relative min-h-screen bg-black text-white">

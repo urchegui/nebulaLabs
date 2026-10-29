@@ -7,9 +7,9 @@ export default {
         'Custom software, AI agents, end-to-end automation and external CTO services, backed by a team of mathematicians and engineers. Remote-first, global.',
     },
     aiCentral: {
-      title: 'One data layer for all your business tools · Nebula Labs',
+      title: 'AI Central — One data layer for all your business tools',
       description:
-        'Connect your CRM, ERP and ops tools into one layer. Unify data from every source and make decisions from a single place. Built by Nebula Labs.',
+        'Connect your ERP, CRM, e-commerce and inventory in one governed layer. Ask questions, get traceable answers and decide with your own data.',
     },
     // PROVISIONAL
     legalNotice: { title: 'Legal notice and terms of use · Nebula Labs', description: 'Legal notice and terms of use of nebulalabs.es, owned by NEBULA LABS SL.' },
@@ -315,59 +315,193 @@ export default {
     madeWith: 'Made with precision.',
   },
   aiCentralPage: {
-    badge: 'Product',
-    title: 'One data layer for all your business tools',
-    subtitle:
-      'Nebula connects your CRM, ERP, finance and ops software into a single layer, so decisions run on unified data.',
-    ctaDemo: 'Book a demo',
-    ctaBeta: 'Join the beta',
-    integrationsTitle: 'Integrations', // PROVISIONAL
-    integrations: [] as string[],
-    howTitle: 'How it works', // PROVISIONAL
-    // PROVISIONAL (step texts)
-    how: {
-      connect: { title: 'Connect', text: 'Connect the tools your company already uses.' },
-      unify: { title: 'Unify', text: 'Bring their data together in a single layer.' },
-      decide: { title: 'Decide', text: 'Make decisions from one place, with all your data.' },
+    illustrative: 'Illustrative',
+    hero: {
+      badge: 'AI Central · Pilot partners wanted',
+      eyebrow: 'AI Central · Pilot',
+      title: 'One data layer for all your business tools',
+      subtitle:
+        'AI Central connects your ERP, CRM, e-commerce, inventory and documents into one governed layer, so every team decides with reliable, traceable data.',
+      ctaPrimary: 'Book a discovery workshop',
+      ctaSecondary: 'See how it works',
+      mock: {
+        aria: 'Illustrative product view: a sales rep asks which customers might need restocking this week and gets an answer with its source, limited to their own accounts, and a recommendation that needs their approval.', // PROVISIONAL
+        route: 'ai-central / sales',
+        sourcesLabel: 'Sources', // PROVISIONAL
+        sources: ['ERP', 'CRM', 'E-commerce', 'Inventory', 'Documents'],
+        question: 'Which customers might need restocking this week?',
+        tags: ['Observed data', 'Source: ERP · Orders', 'Your accounts only'],
+        answer: '[Customer A] usually orders every 30 days. Their last order was 47 days ago, and the product is in stock.',
+        recommendation: 'Recommendation: schedule a call this week',
+        approval: 'Needs your approval',
+      },
     },
-    featuresTitle: 'Features', // PROVISIONAL
-    features: [] as { title: string; text: string }[],
-    securityTitle: 'Security & data', // PROVISIONAL
-    security: [] as string[],
+    systems: {
+      title: 'Connects the systems you already use',
+      chips: ['ERP', 'CRM', 'E-commerce', 'Inventory', 'Finance', 'Documents'],
+    },
+    problem: {
+      eyebrow: 'The problem',
+      title: 'Your critical information lives in too many places',
+      cards: [
+        { title: 'Scattered sources', text: 'ERP, CRM, e-commerce, inventory and documents, each with its own version of the truth.' },
+        { title: "Numbers that don't match", text: 'Teams spend time reconciling figures before they can use them.' },
+        { title: 'From data to action, by hand', text: 'Every decision means checking several sources and reworking the information manually.' },
+      ],
+    },
+    how: {
+      eyebrow: 'How it works',
+      title: 'Connect. Unify. Decide.',
+      subtitle: "We don't replace your systems. We connect them and add one governed layer on top.",
+      steps: [
+        { title: 'Connect', text: 'We bring in the sources that matter without disrupting the systems you already run.' },
+        { title: 'Unify', text: 'Consistent metrics with quality criteria, and every figure traceable to its source.' },
+        { title: 'Decide', text: 'Each team asks questions and gets answers from an interface built for its work.' },
+      ],
+      scene: {
+        chips: ['ERP', 'CRM', 'E-commerce', 'Inventory', 'Finance', 'Documents'],
+        recordA: 'Customer A · €1,240',
+        recordB: 'CUSTOMER A LTD · 1240.00',
+        unifiedName: 'Customer A',
+        unifiedValue: '€1,240 · last 30 days', // PROVISIONAL (period label)
+        origin: '✓ Origin: ERP · Orders',
+        question: 'Which customers might need restocking this week?',
+        answerTags: ['Observed data', 'Source: ERP · Orders', 'Your accounts only'],
+        locked: 'Finance · No access with your profile',
+      },
+      // PROVISIONAL (descriptions of the illustrations for screen readers)
+      aria: [
+        'Illustration: six business systems (ERP, CRM, e-commerce, inventory, finance and documents) connect to one central layer.',
+        'Illustration: two records of the same customer that do not match become one record with its origin shown: ERP, Orders.',
+        'Illustration: a question gets an answer labelled as observed data, with its source and limited to your accounts. Finance data stays locked for this profile.',
+      ],
+    },
+    principles: {
+      eyebrow: 'Principles',
+      title1: 'AI explains.',
+      title2: 'Your data decides.',
+      subtitle:
+        'AI Central is not a chatbot guessing over your data. Authority over data, calculations and permissions always stays in the system.',
+      diagram: {
+        aria: 'Diagram: your question goes to the system, which calculates and applies permissions; then the AI explains the result in the answer.', // PROVISIONAL
+        question: 'Your question',
+        system: 'The system calculates and applies permissions',
+        ai: 'The AI explains it',
+        answer: 'Answer', // PROVISIONAL
+      },
+      kinds: ['Observed data', 'Prediction', 'Recommendation', 'Not enough data to answer'],
+      cards: [
+        { title: 'Calculated, not invented', text: 'Figures come from the system, with their source and period. The AI explains them.' },
+        { title: 'Permissions in the system', text: 'Every query is authorized by role and scope. The AI never grants access.' },
+        { title: 'Origin always visible', text: 'Each metric keeps where it came from and how it was calculated.' },
+        { title: "Knows when it doesn't know", text: 'It separates data, predictions and recommendations, and says so when data is missing.' },
+      ],
+      snippetLabel: '// Illustrative · not a public API',
+    },
+    teams: {
+      eyebrow: 'For every team', // PROVISIONAL
+      title: 'One layer, an interface for each team',
+      tabsLabel: 'Teams', // PROVISIONAL
+      items: [
+        {
+          label: 'Sales',
+          text: 'Customer history and suggested opportunities based on buying patterns.',
+          question: 'What did this account buy last quarter?',
+          tags: ['Observed data', 'Source: ERP · Orders', 'Your accounts only'], // PROVISIONAL
+        },
+        {
+          label: 'Leadership',
+          text: 'Consistent metrics and traceable explanations of how the business is evolving.',
+          question: 'Why did margin change this month?',
+          tags: ['Observed data', 'Source: Finance', 'Leadership scope'], // PROVISIONAL
+        },
+        {
+          label: 'Operations',
+          text: 'Catalogs, statuses and sources unified, with the origin of every record in view.',
+          question: 'Which products differ between the shop and the ERP?',
+          tags: ['Observed data', 'Source: E-commerce · ERP', 'Operations scope'], // PROVISIONAL
+        },
+        {
+          label: 'Administration',
+          text: "Sensitive queries restricted to authorized users, under your company's policy.",
+          question: 'Which invoices are overdue?',
+          tags: ['Observed data', 'Source: Finance', 'Authorized users only'], // PROVISIONAL
+        },
+      ],
+      note: 'Advanced recommendations require enough data and validation in a pilot before any impact or accuracy is claimed.',
+    },
     aiDistribution: {
       badge: 'Built on AI Central',
       title: 'AI Distribution: everything your sales team needs, in one conversation',
       subtitle:
         'Connected to your ERP through AI Central, it gives every sales rep prices, stock, history and recommendations without leaving the conversation.',
       capabilities: [
-        { title: 'Prices & stock', text: 'Check product prices and availability straight from your ERP.' },
-        { title: 'Account history', text: 'Past orders, conversations and conditions for any customer.' },
-        { title: 'Customer insight', text: 'Everything your company knows about an account, in one answer.' },
-        { title: 'What to sell, and to whom', text: 'Which products to offer and which customers to prioritize.' },
-        { title: 'Prescriptive analysis', text: "Recommended next steps based on each rep's situation." },
-        { title: 'Connected to your ERP', text: 'Works on the systems your company already uses, through AI Central.' },
+        { title: 'Prices & stock', text: 'Straight from your ERP.' },
+        { title: 'Account history', text: 'Past orders and conditions.' },
+        { title: 'Customer insight', text: 'An account, in one answer.' },
+        { title: 'What to sell, to whom', text: 'Products and priorities.' },
+        { title: 'Prescriptive analysis', text: 'Recommended next steps.' },
+        { title: 'Your permissions', text: 'Each rep sees their own accounts.' },
       ],
       // PROVISIONAL — pendiente @marketing (snippet)
       snippet: ['Price and stock of SKU-1042?', 'What should I offer this account next?'],
       snippetObject: 'distribution',
     },
-    custom: {
-      title: 'Need it built for you?', // PROVISIONAL
-      text: 'If your case needs a custom solution, our end-to-end automation service can build it with you.', // PROVISIONAL
-      cta: 'See end-to-end automation', // PROVISIONAL
+    cto: {
+      eyebrow: 'For your CTO',
+      title: 'Built to pass a technical review',
+      areas: [
+        { title: 'Security & isolation', text: 'Roles, attributes, per-organization segregation and audit trails.' },
+        { title: 'Data', text: 'Source reconciliation, quality, freshness and shared definitions.' },
+        { title: 'AI', text: 'Accuracy, observability, privacy and cost control.' },
+        { title: 'Operations', text: 'Resilient integrations, measured scaling, recovery and support.' },
+      ],
+      bandTitle: 'Your infrastructure, your call',
+      bandText:
+        'Chosen with your CTO based on data policy, latency, volume and budget: self-hosted models or managed AI providers, never locked into a single model.',
+      cta: 'Request the technical brief (under NDA)', // PROVISIONAL — pendiente @marketing
     },
-    finalTitle: 'Want to see it with your own data?', // PROVISIONAL
+    phases: {
+      eyebrow: 'Adoption in phases',
+      title: 'Start small, measure, then grow',
+      phaseLabel: 'Phase',
+      steps: [
+        { title: 'Discovery', text: 'Goals, sources, permissions and priority metrics.', deliverable: 'Scope and success criteria' },
+        { title: 'Data pilot', text: 'Quality of a first set of sources and entities.', deliverable: 'First traceable dashboard' },
+        { title: 'AI pilot', text: 'Real questions, permissions and accuracy.', deliverable: 'Assistant evaluated in a controlled environment' },
+        { title: 'Expansion', text: 'New sources and recommendations.', deliverable: 'Measured evolution plan' },
+      ],
+    },
     faqTitle: 'Frequently asked questions',
-    // PROVISIONAL (answers)
     faq: {
-      what: {
-        q: 'What is AI Central?',
-        a: 'A layer that centralizes your company software so you can make decisions with data from all your sources.',
+      replace: {
+        q: 'Does AI Central replace our ERP or CRM?',
+        a: 'No. It connects to the systems you already use and adds a governed layer on top. Your systems remain the source of each record.',
       },
-      custom: {
-        q: 'Can it be adapted to my company?',
-        a: 'Yes. Tell us which tools you use and what you need to decide, and we will tell you how we would approach it.',
+      numbers: {
+        q: 'Can the AI make up numbers?',
+        a: 'Figures are calculated by the system, with their source and period. The AI explains the result and says so when data is missing.',
       },
+      access: {
+        q: 'Who can see what?',
+        a: 'Access is defined by role, scope and organization, and enforced by the system on every query. The AI never grants permissions.',
+      },
+      models: {
+        q: 'Which AI models does it use, and where does our data go?',
+        a: 'You decide with us: self-hosted models or managed providers, according to your data policy, latency, volume and budget. The platform does not depend on a single model.',
+      },
+      start: {
+        q: 'How do we get started?',
+        a: 'With a discovery workshop for business and technology. We agree on one initial source, two or three high-value questions, access controls and a measurable definition of success, then scope a focused pilot.',
+      },
+    },
+    final: {
+      title: 'Start with one question that matters',
+      subtitle:
+        "Tell us which tools you use and the question your team asks most. We'll show you how it would look in one layer.",
+      primary: 'Book a discovery workshop',
+      emailLabel: 'Or write to us at', // PROVISIONAL
+      note: 'Features, integrations and results are validated in each pilot and agreed in the scope.',
     },
   },
   caseStudy: {

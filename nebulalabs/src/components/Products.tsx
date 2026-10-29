@@ -59,7 +59,7 @@ export default function Products() {
             <h3 className="text-white font-semibold text-lg mb-2">{AI_DISTRIBUTION[lang].name}</h3>
             <p className="text-[#8a8a93] text-sm leading-relaxed mb-5">{t('products.aiDistribution.description')}</p>
             {/* Links to its section on the AI Central landing, so it follows that page's publication flag */}
-            {FLAGS.showAiCentralLink && (
+            {FLAGS.showAiCentralLink && FLAGS.showAiDistribution && (
               <a
                 href={`${pathFor('aiCentral', lang)}#${AI_DISTRIBUTION[lang].anchor}`}
                 onClick={() => ctaClick('products_ai_distribution')}

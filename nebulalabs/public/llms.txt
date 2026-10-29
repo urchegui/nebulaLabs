@@ -15,14 +15,14 @@ Nebula Labs (NEBULA LABS SL, Spain) is a boutique deep-tech lab working on three
 
 ## Products
 
-- AI Central: one data layer for all your business tools. It centralizes a company's software so decisions use data from all its sources.
+- AI Central (pilot phase): one data layer for all your business tools. AI Central connects your ERP, CRM, e-commerce, inventory and documents into one governed layer, so every team decides with reliable, traceable data. https://nebulalabs.es/ai-central
 - AI Distribution (built on AI Central): your sales assistant on top of AI Central: prices, stock, account history and prescriptive analysis, straight from your ERP. Capabilities:
   - Prices & stock: check product prices and availability straight from your ERP.
   - Account history: past orders, conversations and conditions for any customer.
   - Customer insight: everything your company knows about an account, in one answer.
   - What to sell, and to whom: which products to offer and which customers to prioritize.
   - Prescriptive analysis: recommended next steps based on each rep's situation.
-  - Connected to your ERP: works on the systems your company already uses, through AI Central.
+  - Your permissions: each rep only sees the data their profile allows.
 - SLR (Systematic Literature Review): find the most relevant papers for a systematic review, following PRISMA, and download the documentation. Open source.
 
 ## Open source and research

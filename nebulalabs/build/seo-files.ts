@@ -1,8 +1,9 @@
 import type { Plugin } from 'vite';
 import en from '../src/i18n/en';
-import { AI_CENTRAL, AI_DISTRIBUTION, CONTACT_EMAIL, INDEXNOW_KEY, SERVICE_ORDER, SITE_URL, SOCIALS } from '../src/config/site';
+import { AI_CENTRAL, AI_DISTRIBUTION, CONTACT_EMAIL, FLAGS, INDEXNOW_KEY, SERVICE_ORDER, SITE_URL, SOCIALS } from '../src/config/site';
 import { indexablePages, pathFor } from '../src/config/routes';
-import { visibleHomeFaq } from '../src/content/faq';
+import { AI_CENTRAL_FAQ, visibleHomeFaq } from '../src/content/faq';
+import { findForbidden } from './forbidden-terms';
 
 // Generates files derived from the same config as the app, so they never drift:
 // sitemap.xml (indexable pages + hreflang alternates), llms-full.txt and the IndexNow key file.
@@ -24,6 +25,63 @@ function sitemap(lastmod: string): string {
 ${urls.join('\n')}
 </urlset>
 `;
+}
+
+/** Visible text of the AI Central landing (EN). The build fails if it contains a forbidden term. */
+function aiCentralSection(): string[] {
+  const p = en.aiCentralPage;
+  const lines = [
+    `## ${AI_CENTRAL.en.name}: ${p.hero.title}`,
+    '',
+    `Page: ${SITE_URL}${pathFor('aiCentral', 'en')} · Spanish: ${SITE_URL}${pathFor('aiCentral', 'es')}`,
+    '',
+    p.hero.subtitle,
+    '',
+    `${p.systems.title}: ${p.systems.chips.join(', ')}.`,
+    '',
+    `### ${p.problem.title}`,
+    '',
+    ...p.problem.cards.map((c) => `- **${c.title}**: ${c.text}`),
+    '',
+    `### ${p.how.title}`,
+    '',
+    p.how.subtitle,
+    '',
+    ...p.how.steps.map((s, i) => `${i + 1}. **${s.title}**: ${s.text}`),
+    '',
+    `### ${p.principles.title1} ${p.principles.title2}`,
+    '',
+    p.principles.subtitle,
+    '',
+    ...p.principles.cards.map((c) => `- **${c.title}**: ${c.text}`),
+    '',
+    `### ${p.teams.title}`,
+    '',
+    ...p.teams.items.map((item) => `- **${item.label}**: ${item.text}`),
+    '',
+    p.teams.note,
+    '',
+    ...(FLAGS.showAiDistribution
+      ? [`### ${p.aiDistribution.title}`, '', p.aiDistribution.subtitle, '', ...p.aiDistribution.capabilities.map((c) => `- **${c.title}**: ${c.text}`), '']
+      : []),
+    `### ${p.cto.title}`,
+    '',
+    ...p.cto.areas.map((a) => `- **${a.title}**: ${a.text}`),
+    `- **${p.cto.bandTitle}**: ${p.cto.bandText}`,
+    '',
+    `### ${p.phases.title}`,
+    '',
+    ...p.phases.steps.map((s, i) => `${i + 1}. **${s.title}**: ${s.text} → ${s.deliverable}`),
+    '',
+    `### ${p.faqTitle}`,
+    '',
+    ...AI_CENTRAL_FAQ.flatMap((key) => [`#### ${p.faq[key].q}`, '', p.faq[key].a, '']),
+    p.final.note,
+    '',
+  ];
+  const found = findForbidden(lines.join(' '));
+  if (found.length) throw new Error(`AI Central llms-full section contains forbidden terms: ${found.join(', ')}`);
+  return lines;
 }
 
 function llmsFull(): string {
@@ -76,6 +134,7 @@ function llmsFull(): string {
     `- ${en.contact.info.location}`,
     `- Contact form: ${SITE_URL}/#contact`,
     '',
+    ...(FLAGS.showAiCentralLink ? aiCentralSection() : []),
   ];
   return lines.join('\n');
 }

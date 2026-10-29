@@ -77,10 +77,11 @@ function CookieTable() {
   );
 }
 
-export default function LegalPage({ doc }: { doc: Doc }) {
+export default function LegalPage() {
   const { t } = useTranslation();
   const { t: tl } = useTranslation('legal');
-  const { lang } = useRoute();
+  const { lang, page } = useRoute();
+  const doc = page as Doc;
   const sections = tl(`${doc}.sections`, { returnObjects: true }) as LegalSection[];
 
   return (

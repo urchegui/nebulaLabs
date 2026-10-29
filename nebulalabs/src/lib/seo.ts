@@ -3,7 +3,7 @@ import headingFont from '../assets/fonts/GoodTimesRg.otf?url';
 import { AI_CENTRAL, AI_DISTRIBUTION, FLAGS, SEARCH_VERIFICATION, SERVICE_ORDER, SITE_NAME, SITE_URL, SOCIALS, type Lang } from '../config/site';
 import { LEGAL } from '../config/legal';
 import { alternatesFor, isIndexable, pathFor, type Route } from '../config/routes';
-import { visibleHomeFaq } from '../content/faq';
+import { AI_CENTRAL_FAQ, visibleHomeFaq } from '../content/faq';
 
 type HeadElement = { type: string; props: Record<string, string>; children?: string };
 
@@ -44,7 +44,6 @@ function organization(lang: Lang) {
       'Artificial intelligence',
       'Large language models',
       'Autonomous agents',
-      'MLOps',
       'Process automation',
       'Distributed systems',
     ],
@@ -65,7 +64,8 @@ function aiDistribution(lang: Lang) {
     operatingSystem: 'Web',
     inLanguage: lang,
     featureList: capabilities.map((c) => `${c.title}: ${c.text}`),
-    ...(FLAGS.showAiCentralLink && { url: abs(`${pathFor('aiCentral', lang)}#${AI_DISTRIBUTION[lang].anchor}`) }),
+    ...(FLAGS.showAiCentralLink &&
+      FLAGS.showAiDistribution && { url: abs(`${pathFor('aiCentral', lang)}#${AI_DISTRIBUTION[lang].anchor}`) }),
     publisher: { '@id': `${SITE_URL}/#organization` },
   };
 }
@@ -122,19 +122,32 @@ function homeGraph(lang: Lang) {
 
 function aiCentralGraph(lang: Lang) {
   const t = i18n.getFixedT(lang);
+  const url = abs(pathFor('aiCentral', lang));
   return [
     organization(lang),
+    // No offers/price, aggregateRating, review or softwareVersion: pilot phase
     {
       '@type': 'SoftwareApplication',
+      '@id': `${SITE_URL}/#ai-central`,
       name: AI_CENTRAL[lang].name,
-      url: abs(pathFor('aiCentral', lang)),
-      description: t('meta.aiCentral.description'),
+      url,
+      description: t('aiCentralPage.hero.subtitle'),
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web',
       inLanguage: lang,
       publisher: { '@id': `${SITE_URL}/#organization` },
     },
-    aiDistribution(lang),
+    {
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      inLanguage: lang,
+      mainEntity: AI_CENTRAL_FAQ.map((key) => ({
+        '@type': 'Question',
+        name: t(`aiCentralPage.faq.${key}.q`),
+        acceptedAnswer: { '@type': 'Answer', text: t(`aiCentralPage.faq.${key}.a`) },
+      })),
+    },
+    ...(FLAGS.showAiDistribution ? [aiDistribution(lang)] : []),
   ];
 }
 

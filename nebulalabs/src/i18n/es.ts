@@ -9,9 +9,9 @@ const es: typeof en = {
         'Software a medida, agentes de IA, automatización integral y CTO externo, con un equipo de matemáticos e ingenieros. Remote-first, global.',
     },
     aiCentral: {
-      title: 'Todo tu software en una sola capa de datos · Nebula Labs',
+      title: 'IA Central — Todo tu software en una sola capa de datos',
       description:
-        'Conecta CRM, ERP y herramientas de operaciones en una sola capa. Unifica datos de todas tus fuentes y decide desde un único lugar.',
+        'Conecta ERP, CRM, e-commerce e inventario en una capa gobernada. Pregunta, obtén respuestas trazables y decide con los datos de tu empresa.',
     },
     // PROVISIONAL
     legalNotice: { title: 'Aviso legal y términos de uso · Nebula Labs', description: 'Aviso legal y términos de uso de nebulalabs.es, titularidad de NEBULA LABS SL.' },
@@ -317,59 +317,193 @@ const es: typeof en = {
     madeWith: 'Hecho con precisión.',
   },
   aiCentralPage: {
-    badge: 'Producto',
-    title: 'Todo tu software, una sola capa de datos',
-    subtitle:
-      'Conectamos CRM, ERP, finanzas y operaciones en una capa única para que decidas con datos unificados, no con hojas de cálculo.',
-    ctaDemo: 'Solicita una demo',
-    ctaBeta: 'Únete a la beta',
-    integrationsTitle: 'Integraciones', // PROVISIONAL
-    integrations: [],
-    howTitle: 'Cómo funciona', // PROVISIONAL
-    // PROVISIONAL (textos de los pasos)
-    how: {
-      connect: { title: 'Conecta', text: 'Conecta las herramientas que tu empresa ya usa.' },
-      unify: { title: 'Unifica', text: 'Reúne sus datos en una sola capa.' },
-      decide: { title: 'Decide', text: 'Toma decisiones desde un único lugar, con todos tus datos.' },
+    illustrative: 'Ilustrativo',
+    hero: {
+      badge: 'IA Central · Buscamos empresas piloto',
+      eyebrow: 'IA Central · Piloto',
+      title: 'Todo tu software, una sola capa de datos',
+      subtitle:
+        'IA Central conecta tu ERP, CRM, comercio electrónico, inventario y documentos en una capa gobernada para que cada equipo decida con datos fiables y trazables.',
+      ctaPrimary: 'Reserva un taller de descubrimiento',
+      ctaSecondary: 'Cómo funciona',
+      mock: {
+        aria: 'Vista ilustrativa del producto: un comercial pregunta qué clientes podrían necesitar reposición esta semana y obtiene una respuesta con su fuente, limitada a su cartera, y una recomendación pendiente de su aprobación.', // PROVISIONAL
+        route: 'ia-central / ventas',
+        sourcesLabel: 'Fuentes', // PROVISIONAL
+        sources: ['ERP', 'CRM', 'E-commerce', 'Inventario', 'Documentos'],
+        question: '¿Qué clientes podrían necesitar reposición esta semana?',
+        tags: ['Dato observado', 'Fuente: ERP · Pedidos', 'Solo tu cartera'],
+        answer: '[Cliente A] suele pedir cada 30 días. Su último pedido fue hace 47 días y el producto tiene stock.',
+        recommendation: 'Recomendación: llamarle esta semana',
+        approval: 'Pendiente de tu aprobación',
+      },
     },
-    featuresTitle: 'Funcionalidades', // PROVISIONAL
-    features: [],
-    securityTitle: 'Seguridad y datos', // PROVISIONAL
-    security: [],
+    systems: {
+      title: 'Se conecta con los sistemas que ya usas',
+      chips: ['ERP', 'CRM', 'E-commerce', 'Inventario', 'Finanzas', 'Documentos'],
+    },
+    problem: {
+      eyebrow: 'El problema',
+      title: 'Tu información crítica vive en demasiados sitios',
+      cards: [
+        { title: 'Fuentes dispersas', text: 'ERP, CRM, comercio electrónico, inventario y documentos, cada uno con su versión de los datos.' },
+        { title: 'Cifras que no cuadran', text: 'Los equipos pierden tiempo conciliando datos antes de poder usarlos.' },
+        { title: 'Del dato a la acción, a mano', text: 'Cada decisión obliga a consultar varias fuentes y rehacer la información manualmente.' },
+      ],
+    },
+    how: {
+      eyebrow: 'Cómo funciona',
+      title: 'Conecta. Unifica. Decide.',
+      subtitle: 'No sustituimos tus sistemas. Los conectamos y añadimos encima una capa gobernada.',
+      steps: [
+        { title: 'Conecta', text: 'Incorporamos las fuentes relevantes sin interrumpir los sistemas que ya funcionan.' },
+        { title: 'Unifica', text: 'Indicadores coherentes, con criterios de calidad y cada cifra trazable hasta su origen.' },
+        { title: 'Decide', text: 'Cada equipo pregunta y obtiene respuestas desde una interfaz pensada para su trabajo.' },
+      ],
+      scene: {
+        chips: ['ERP', 'CRM', 'E-commerce', 'Inventario', 'Finanzas', 'Documentos'],
+        recordA: 'Cliente A · 1.240 €',
+        recordB: 'CLIENTE A S.L. · 1240,00',
+        unifiedName: 'Cliente A',
+        unifiedValue: '1.240 € · últimos 30 días', // PROVISIONAL (periodo)
+        origin: '✓ Origen: ERP · Pedidos',
+        question: '¿Qué clientes podrían necesitar reposición esta semana?',
+        answerTags: ['Dato observado', 'Fuente: ERP · Pedidos', 'Solo tu cartera'],
+        locked: 'Finanzas · Sin acceso con tu perfil',
+      },
+      // PROVISIONAL (descripciones de las ilustraciones para lectores de pantalla)
+      aria: [
+        'Ilustración: seis sistemas de empresa (ERP, CRM, comercio electrónico, inventario, finanzas y documentos) se conectan a una capa central.',
+        'Ilustración: dos fichas del mismo cliente que no coinciden se convierten en una sola ficha con su origen visible: ERP, Pedidos.',
+        'Ilustración: una pregunta obtiene una respuesta etiquetada como dato observado, con su fuente y limitada a tu cartera. Los datos de finanzas quedan bloqueados para este perfil.',
+      ],
+    },
+    principles: {
+      eyebrow: 'Principios',
+      title1: 'La IA explica.',
+      title2: 'Tus datos deciden.',
+      subtitle:
+        'IA Central no es un chatbot que adivina sobre tus datos. La autoridad sobre datos, cálculos y permisos está siempre en el sistema.',
+      diagram: {
+        aria: 'Diagrama: tu pregunta llega al sistema, que calcula y aplica permisos; después la IA explica el resultado en la respuesta.', // PROVISIONAL
+        question: 'Tu pregunta',
+        system: 'El sistema calcula y aplica permisos',
+        ai: 'La IA lo explica',
+        answer: 'Respuesta', // PROVISIONAL
+      },
+      kinds: ['Dato observado', 'Predicción', 'Recomendación', 'Faltan datos para responder'],
+      cards: [
+        { title: 'Cifras calculadas, no inventadas', text: 'Los números salen del sistema, con su fuente y su periodo. La IA los explica.' },
+        { title: 'Permisos en el sistema', text: 'Cada consulta se autoriza por perfil y ámbito. La IA nunca concede accesos.' },
+        { title: 'Origen siempre visible', text: 'Cada indicador conserva de dónde viene y con qué criterio se calculó.' },
+        { title: 'Sabe cuándo no sabe', text: 'Distingue dato, predicción y recomendación, y avisa cuando faltan datos.' },
+      ],
+      snippetLabel: '// Ilustrativo · no es una API pública',
+    },
+    teams: {
+      eyebrow: 'Para cada equipo', // PROVISIONAL
+      title: 'Una sola capa, una interfaz para cada equipo',
+      tabsLabel: 'Equipos', // PROVISIONAL
+      items: [
+        {
+          label: 'Comerciales',
+          text: 'Historial de clientes y oportunidades sugeridas según patrones de compra.',
+          question: '¿Qué compró esta cuenta el último trimestre?',
+          tags: ['Dato observado', 'Fuente: ERP · Pedidos', 'Solo tu cartera'], // PROVISIONAL
+        },
+        {
+          label: 'Dirección',
+          text: 'Indicadores consistentes y explicaciones trazables sobre la evolución del negocio.',
+          question: '¿Por qué ha cambiado el margen este mes?',
+          tags: ['Dato observado', 'Fuente: Finanzas', 'Ámbito de dirección'], // PROVISIONAL
+        },
+        {
+          label: 'Operaciones',
+          text: 'Catálogos, estados y fuentes unificados, con el origen de cada registro a la vista.',
+          question: '¿Qué productos no coinciden entre la tienda y el ERP?',
+          tags: ['Dato observado', 'Fuente: E-commerce · ERP', 'Ámbito de operaciones'], // PROVISIONAL
+        },
+        {
+          label: 'Administración',
+          text: 'Consultas sensibles restringidas a usuarios autorizados, según la política de tu empresa.',
+          question: '¿Qué facturas están vencidas?',
+          tags: ['Dato observado', 'Fuente: Finanzas', 'Solo usuarios autorizados'], // PROVISIONAL
+        },
+      ],
+      note: 'Las recomendaciones avanzadas requieren datos suficientes y una validación en piloto antes de declarar impacto o precisión.',
+    },
     aiDistribution: {
       badge: 'Construido sobre IA Central',
       title: 'IA Distribución: todo lo que necesita tu equipo comercial, en una conversación',
       subtitle:
         'Conectada a tu ERP a través de IA Central, da a cada comercial precios, stock, históricos y recomendaciones sin salir de la conversación.',
       capabilities: [
-        { title: 'Precios y stock', text: 'Consulta precios y disponibilidad de productos directamente desde tu ERP.' },
-        { title: 'Históricos', text: 'Pedidos, conversaciones y condiciones anteriores de cualquier cliente.' },
-        { title: 'Información de clientes', text: 'Todo lo que tu empresa sabe de una cuenta, en una sola respuesta.' },
-        { title: 'Qué vender y a quién', text: 'Qué productos ofrecer y a qué clientes dar prioridad.' },
-        { title: 'Análisis prescriptivo', text: 'Siguientes pasos recomendados según la situación de cada comercial.' },
-        { title: 'Conectada a tu ERP', text: 'Funciona sobre los sistemas que tu empresa ya usa, a través de IA Central.' },
+        { title: 'Precios y stock', text: 'Directamente desde tu ERP.' },
+        { title: 'Históricos', text: 'Pedidos y condiciones anteriores.' },
+        { title: 'Información de clientes', text: 'Una cuenta, en una respuesta.' },
+        { title: 'Qué vender y a quién', text: 'Productos y prioridades.' },
+        { title: 'Análisis prescriptivo', text: 'Siguientes pasos recomendados.' },
+        { title: 'Con tus permisos', text: 'Cada comercial ve su cartera.' },
       ],
       // PROVISIONAL — pendiente @marketing (snippet)
       snippet: ['¿Precio y stock del SKU-1042?', '¿Qué le ofrezco a esta cuenta ahora?'],
       snippetObject: 'distribucion',
     },
-    custom: {
-      title: '¿Lo necesitas a medida?',
-      text: 'Si tu caso necesita una solución a medida, nuestro servicio de automatización integral puede construirla contigo.', // PROVISIONAL
-      cta: 'Ver automatización integral', // PROVISIONAL
+    cto: {
+      eyebrow: 'Para tu CTO',
+      title: 'Diseñada para pasar una revisión técnica',
+      areas: [
+        { title: 'Seguridad y aislamiento', text: 'Roles, atributos, segregación por organización y trazabilidad.' },
+        { title: 'Datos', text: 'Reconciliación de fuentes, calidad, frescura y definiciones comunes.' },
+        { title: 'IA', text: 'Exactitud, observabilidad, privacidad y control de costes.' },
+        { title: 'Operación', text: 'Integraciones resilientes, escalado medido, recuperación y soporte.' },
+      ],
+      bandTitle: 'Tu infraestructura, tu decisión',
+      bandText:
+        'Se elige con tu CTO según política de datos, latencia, volumen y presupuesto: modelos autoalojados o proveedores gestionados, sin depender de un único modelo.',
+      cta: 'Solicita el dossier técnico (bajo NDA)', // PROVISIONAL — pendiente @marketing
     },
-    finalTitle: '¿Quieres verlo con tus propios datos?', // PROVISIONAL
+    phases: {
+      eyebrow: 'Adopción por fases',
+      title: 'Empezar pequeño, medir y crecer',
+      phaseLabel: 'Fase',
+      steps: [
+        { title: 'Descubrimiento', text: 'Objetivos, fuentes, permisos y métricas prioritarias.', deliverable: 'Alcance y criterios de éxito' },
+        { title: 'Piloto de datos', text: 'Calidad de un primer conjunto de fuentes y entidades.', deliverable: 'Primer dashboard trazable' },
+        { title: 'Piloto con IA', text: 'Preguntas reales, permisos y precisión.', deliverable: 'Asistente evaluado en entorno controlado' },
+        { title: 'Extensión', text: 'Nuevas fuentes y recomendaciones.', deliverable: 'Plan de evolución medido' },
+      ],
+    },
     faqTitle: 'Preguntas frecuentes',
-    // PROVISIONAL (respuestas)
     faq: {
-      what: {
-        q: '¿Qué es IA Central?',
-        a: 'Una capa que centraliza el software de tu empresa para que decidas con datos de todas tus fuentes.',
+      replace: {
+        q: '¿IA Central sustituye a nuestro ERP o CRM?',
+        a: 'No. Se conecta con los sistemas que ya usas y añade una capa gobernada encima. Tus sistemas siguen siendo el origen de cada registro.',
       },
-      custom: {
-        q: '¿Se puede adaptar a mi empresa?',
-        a: 'Sí. Cuéntanos qué herramientas usas y qué necesitas decidir, y te diremos cómo lo plantearíamos.',
+      numbers: {
+        q: '¿Puede la IA inventarse cifras?',
+        a: 'Las cifras las calcula el sistema, con su fuente y su periodo. La IA explica el resultado y avisa cuando faltan datos.',
       },
+      access: {
+        q: '¿Quién puede ver qué?',
+        a: 'El acceso se define por perfil, ámbito y organización, y el sistema lo aplica en cada consulta. La IA nunca concede permisos.',
+      },
+      models: {
+        q: '¿Qué modelos de IA usa y adónde van nuestros datos?',
+        a: 'Lo decidimos contigo: modelos autoalojados o proveedores gestionados, según tu política de datos, latencia, volumen y presupuesto. La plataforma no depende de un único modelo.',
+      },
+      start: {
+        q: '¿Cómo empezamos?',
+        a: 'Con un taller de descubrimiento con negocio y tecnología. Acordamos una fuente inicial, dos o tres preguntas de alto valor, los controles de acceso y una definición medible de éxito, y a partir de ahí dimensionamos un piloto acotado.',
+      },
+    },
+    final: {
+      title: 'Empieza por una pregunta que importe',
+      subtitle:
+        'Cuéntanos qué herramientas usáis y qué pregunta se hace más tu equipo. Te enseñamos cómo se vería en una sola capa.',
+      primary: 'Reserva un taller de descubrimiento',
+      emailLabel: 'O escríbenos a', // PROVISIONAL
+      note: 'Funciones, integraciones y resultados se validan en cada piloto y se concretan en el acuerdo de alcance.',
     },
   },
   caseStudy: {

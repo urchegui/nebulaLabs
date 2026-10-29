@@ -9,20 +9,24 @@ import Root from './Root.tsx'
 import { allPrerenderPaths, resolveRoute } from './config/routes'
 import { initAnalytics } from './lib/analytics'
 import { buildHead } from './lib/seo'
+import { loadPage } from './pages/registry'
 
 const LEGAL_PAGES = ['legalNotice', 'privacy', 'cookies']
 
 async function start() {
   const route = resolveRoute(window.location.pathname)
-  await setLanguage(route.lang, { legal: LEGAL_PAGES.includes(route.page) })
+  const [Page] = await Promise.all([
+    loadPage(route.page),
+    setLanguage(route.lang, { legal: LEGAL_PAGES.includes(route.page) }),
+  ])
   const root = document.getElementById('root')!
   // Hydrate only when the prerendered HTML matches this route's language
   // (e.g. /es/unknown is served the English 404 page and is rendered client-side in Spanish)
   if (root.hasChildNodes() && document.documentElement.lang === route.lang) {
-    hydrateRoot(root, <Root route={route} />)
+    hydrateRoot(root, <Root route={route} Page={Page} />)
   } else {
     root.innerHTML = ''
-    createRoot(root).render(<Root route={route} />)
+    createRoot(root).render(<Root route={route} Page={Page} />)
   }
   document.documentElement.lang = route.lang
   initAnalytics()
@@ -35,11 +39,14 @@ if (typeof window !== 'undefined') start()
 // Called at build time by vite-prerender-plugin, once per route
 export async function prerender({ url }: { url: string }) {
   const route = resolveRoute(url)
-  await setLanguage(route.lang, { legal: LEGAL_PAGES.includes(route.page) })
+  const [Page] = await Promise.all([
+    loadPage(route.page),
+    setLanguage(route.lang, { legal: LEGAL_PAGES.includes(route.page) }),
+  ])
   // The edge build: the browser one opens a MessageChannel that keeps Node alive after the build
   const { renderToString } = await import('react-dom/server.edge')
   return {
-    html: renderToString(<Root route={route} />),
+    html: renderToString(<Root route={route} Page={Page} />),
     links: new Set(allPrerenderPaths()),
     head: buildHead(route),
   }

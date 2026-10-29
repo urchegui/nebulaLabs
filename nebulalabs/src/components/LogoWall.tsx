@@ -29,7 +29,7 @@ function Group({ label, logos }: { label: string; logos: Logo[] }) {
               }
               // Assets already come in grey (#A6A6B4): no colour filter. Hover keeps the grey (no brand colours),
               // and touch devices get no hover state.
-              className="w-auto max-w-full h-[var(--logo-h-mobile)] md:h-[var(--logo-h)] opacity-[var(--logo-rest)] [@media(hover:hover)]:hover:opacity-100 transition-opacity duration-200"
+              className="w-auto max-w-full object-contain h-[var(--logo-h-mobile)] md:h-[var(--logo-h)] opacity-[var(--logo-rest)] [@media(hover:hover)]:hover:opacity-100 transition-opacity duration-200"
             />
           </li>
         ))}

@@ -1,0 +1,108 @@
+/*
+ * AI Central landing: animation layer.
+ * - Only transform, opacity and stroke-dashoffset are animated.
+ * - Server HTML shows every final state. The inline script in index.html adds `js` to <html>;
+ *   only then are animations declared, paused until their container gets `is-played`.
+ * - prefers-reduced-motion: nothing animates, final states are shown.
+ */
+
+@keyframes aic-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes aic-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes aic-pop {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes aic-char {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes aic-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes aic-travel {
+  0% { opacity: 0; transform: translate(0, 0); }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)); }
+}
+@keyframes aic-merge {
+  0% { opacity: 0; transform: translate(0, -50%); }
+  20% { opacity: 1; transform: translate(0, -50%); }
+  60% { opacity: 1; transform: translate(0, -50%); }
+  100% { opacity: 0; transform: translate(var(--mx), -50%) scale(0.5); }
+}
+@keyframes aic-grow-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes aic-grow-y {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+/* Final states (no JS / reduced motion) */
+.aic-merge { opacity: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .aic-a {
+    animation: var(--a-name, aic-fade-up) var(--a-dur, 0.6s) cubic-bezier(0.2, 0.7, 0.2, 1) var(--a-delay, 0s) both;
+  }
+  .js .aic-a.aic-char { --a-name: aic-char; --a-dur: 0.01s; }
+  .js .aic-a.aic-fade { --a-name: aic-fade; }
+  .js .aic-a.aic-pop { --a-name: aic-pop; }
+  .js .aic-a.aic-draw { --a-name: aic-draw; --a-dur: 0.9s; }
+  .js .aic-a.aic-grow-x { --a-name: aic-grow-x; --a-dur: 0.7s; }
+  .js .aic-a.aic-grow-y { --a-name: aic-grow-y; --a-dur: 0.7s; }
+  /* Pulses run twice and stop: no continuous motion, no pause control needed (WCAG 2.2.2) */
+  .js .aic-a.aic-travel { --a-name: aic-travel; --a-dur: 1.4s; animation-iteration-count: 2; }
+  .js .aic-a.aic-merge { --a-name: aic-merge; --a-dur: 1.6s; }
+
+  /* Paused until the container is played */
+  .js .aic-anim:not(.is-played) .aic-a { animation-play-state: paused; }
+  .js .aic-scene:not(.played-1) .aic-l1 .aic-a,
+  .js .aic-scene:not(.played-2) .aic-l2 .aic-a,
+  .js .aic-scene:not(.played-3) .aic-l3 .aic-a { animation-play-state: paused; }
+  /* Mobile vignettes 2 and 3 show the base constellation already in place */
+  .js .aic-scene.aic-base-static .aic-l1 .aic-a { animation: none; }
+
+  .aic-layer,
+  .aic-dim { transition: opacity 0.45s ease; }
+}
+
+/* Stage layers: only the current stage's overlay is visible */
+.aic-scene .aic-layer { opacity: 0; }
+.aic-scene[data-stage='2'] .aic-l2,
+.aic-scene[data-stage='3'] .aic-l3 { opacity: 1; }
+.aic-scene[data-stage='2'] .aic-dim,
+.aic-scene[data-stage='3'] .aic-dim { opacity: 0.5; }
+
+/* Core: opaque luminous center, no labels */
+.aic-core {
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(126, 200, 255, 0.75) 18%, rgba(0, 163, 255, 0.35) 42%, rgba(0, 102, 204, 0.12) 62%, transparent 72%);
+  box-shadow: 0 0 60px rgba(0, 163, 255, 0.25);
+}
+
+/* System chips: subtle glow on hover (pointer devices only) */
+@media (hover: hover) {
+  .aic-chip { transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease; }
+  .aic-chip:hover {
+    border-color: rgba(0, 163, 255, 0.45);
+    box-shadow: 0 0 18px rgba(0, 163, 255, 0.18);
+    color: #ffffff;
+  }
+}
+
+/* Below-the-fold sections: skip style/layout until they approach the viewport.
+   Not used on "How it works" (its sticky scene needs normal layout). */
+.aic-cv {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}

@@ -43,10 +43,15 @@ export const FLAGS = {
   showTeamGroup: true,
   /** Academic collaborations block in #research */
   showCollaborations: false,
-  /** AI Central landing: links from nav/products, indexing, sitemap and SoftwareApplication JSON-LD */
-  showAiCentralLink: false,
-  /** AI Central primary CTA: 'demo' ("Book a demo") or 'beta' ("Join the beta") */
-  aiCentralCta: 'demo' as 'demo' | 'beta',
+  /** AI Central landing: links from home, indexing, sitemap and SoftwareApplication JSON-LD.
+   *  true = published with the next push to main. */
+  showAiCentralLink: true,
+  /** AI Central hero badge "Pilot partners wanted" (pending founder confirmation) */
+  showPilotBadge: false,
+  /** AI Distribution section on the AI Central landing (and its JSON-LD there) */
+  showAiDistribution: false,
+  /** Illustrative code window in the AI Central "Principles" section */
+  showCodeSnippet: true,
   /** FAQ "Where are your papers published?" until @marketing delivers new copy */
   showPapersFaq: false,
   /** Link to the SLR GitHub repo (SLR is mentioned without a link for now) */
